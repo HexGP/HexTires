@@ -62,6 +62,7 @@ $conn->close();
 
 <p>Are you a new technician? <a href="tech_register.php">Register here</a></p>
 <p>Don't work <a href="../Client/client_login.php">here</a>?</p>
+<p>Admins login <a href="../Admin/admin_login.php">here</a>?</p>
 
 </body>
 </html>
