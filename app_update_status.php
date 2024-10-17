@@ -39,7 +39,7 @@ if (isset($_POST['appointment_id']) && isset($_POST['new_status'])) {
     }
 
     // Append to status history
-    $new_history_entry = $current_status . ' → ' . $new_status . ' by ' . $user_role . ' on ' . date('Y-m-d H:i:s') . '; ';
+    $new_history_entry = $current_status . ' → ' . $new_status . ' by ' . $user_role . ' on ' . date('Y-m-d H:i:s') . "\n";
     $updated_history = $status_history . $new_history_entry;
 
     // Update the appointment status and status history

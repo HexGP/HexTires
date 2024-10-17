@@ -36,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Append to status history
     $status_history = $appointment['status_history'] ?? '';
-    $new_history_entry = $current_status . ' to ' . $new_status . ' on ' . date('Y-m-d H:i:s') . '; ';
+    // Assuming $status_history contains the existing status history from the database
+    $new_history_entry = $current_status . ' → ' . $new_status . ' by ' . $user_role . ' on ' . date('Y-m-d H:i:s') . "\n";
     $updated_history = $status_history . $new_history_entry;
 
     // Update the appointment status and status history
@@ -55,6 +56,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Edit Appointment</title>
     <script>
@@ -63,13 +65,16 @@ $conn->close();
     }
     </script>
 </head>
+
 <body>
     <h1>Edit Appointment #<?php echo $appointment_id; ?></h1>
-    
+
     <h2>Appointment Details</h2>
     <p><strong>Service:</strong> <?php echo $appointment['service_name']; ?></p>
-    <p><strong>Client:</strong> <?php echo $appointment['client_first_name'] . ' ' . $appointment['client_last_name']; ?></p>
-    <p><strong>Technician:</strong> <?php echo $appointment['tech_first_name'] . ' ' . $appointment['tech_last_name']; ?></p>
+    <p><strong>Client:</strong>
+        <?php echo $appointment['client_first_name'] . ' ' . $appointment['client_last_name']; ?></p>
+    <p><strong>Technician:</strong>
+        <?php echo $appointment['tech_first_name'] . ' ' . $appointment['tech_last_name']; ?></p>
     <p><strong>Date:</strong> <?php echo $appointment['appointment_date']; ?></p>
     <p><strong>Time:</strong> <?php echo $appointment['appointment_time']; ?></p>
     <p><strong>Status:</strong> <?php echo ucfirst($appointment['appointment_status']); ?></p>
@@ -92,6 +97,8 @@ $conn->close();
     <h2>Status History</h2>
     <p><?php echo nl2br($appointment['status_history']); ?></p>
 
+
     <a href="manage_appointments.php">Back to Appointments</a>
 </body>
+
 </html>
