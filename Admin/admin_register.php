@@ -46,28 +46,31 @@ $conn->close();
 <html>
 <head>
     <title>Admin Registration</title>
+    <link rel="stylesheet" href="admin_styles.css"> <!-- Link to central CSS -->
 </head>
 <body>
-    <h2>Register as Admin</h2>
-    <form method="POST" action="">
-        <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" required><br>
+    <div class="form-container">
+        <h2>Register as Admin</h2>
+        <form method="POST" action="">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" required><br>
 
-        <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" required><br>
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" required><br>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br>
 
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" name="phone_number" required><br>
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" name="phone_number" required><br>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required><br>
 
-        <input type="submit" value="Register">
-    </form>
+            <input type="submit" value="Register">
+        </form>
+
+        <p>Administrator? <a href="admin_login.php">Login here</a></p>
+    </div>
 </body>
-<p>Administrator? <a href="admin_login.php">Login here</a></p>
-
 </html>
