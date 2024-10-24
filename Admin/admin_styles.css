@@ -19,6 +19,49 @@ body {
 }
 
 /* Sidebar Styles */
+
+/* Container Styling for the Admin Info */
+.admin-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Hexagon Frame with flat top */
+.hexagon-frame {
+    position: relative;
+    width: 120px; /* Slightly larger than image size */
+    height: 110px;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    background-color: #ffffff; /* Color of the frame */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hex-frame {
+    position: relative;
+    width: 120px; /* Slightly larger than image size */
+    height: 110px;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    background-color: #34495e; /* Color of the frame */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hexagonal Profile Picture with flat top */
+.profile-preview {
+    width: 100px; /* Adjust size as needed */
+    height: 90px; /* Adjust size as needed */
+    object-fit:inherit; /* Make sure image scales correctly */
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    border: 2px solid #34495e; /* Optional: Inner border for the image */
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0); /* Optional: Add shadow */
+}
+
+
 .sidebar {
     background-color: #34495e;
     color: #fff;
@@ -44,8 +87,30 @@ body {
     font-weight: bold;
 }
 
+/* Flex container for buttons */
+.button-group {
+    display: flex;
+    gap: 10px; /* Adjust gap between buttons */
+    margin-top: 20px; /* Add some margin to create space above */
+}
+
+.settings-form button {
+    background-color: #459eb1;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.settings-form button:hover {
+    background-color: #47cfee;
+}
+
 .logout-form button {
-    background-color: #e74c3c;
+    background-color: #d34333;
     color: #fff;
     border: none;
     padding: 8px 15px; /* Reduced padding */
@@ -56,7 +121,7 @@ body {
 }
 
 .logout-form button:hover {
-    background-color: #c0392b;
+    background-color: #ff5542;
 }
 
 /* Dashboard Grid Layout */
@@ -122,21 +187,25 @@ body {
     grid-area: appointments;
 }
 
-.technicians {
-    grid-area: technician;
+.services {
+    grid-area: services;
 }
 
 .clients {
     grid-area: clients;
 }
 
-.services {
-    grid-area: services;
+.technicians {
+    grid-area: technician;
 }
 
 .display-settings {
-    grid-area: display;
+    grid-area: schedules;
 }
+
+/* .display-settings {
+    grid-area: display;
+} */
 
 /* Hover Effect */
 .grid-item:hover {
