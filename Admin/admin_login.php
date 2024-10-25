@@ -46,21 +46,23 @@ $conn->close();
 <html>
 <head>
     <title>Admin Login</title>
+    <link rel="stylesheet" href="admin_styles.css"> <!-- Link to central CSS -->
 </head>
 <body>
-    <h2>Login as Admin</h2>
-    <form method="POST" action="">
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+    <div class="form-container">
+        <h2>Login as Admin</h2>
+        <form method="POST" action="">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required><br>
 
-        <input type="submit" value="Login">
-    </form>
+            <input type="submit" value="Login">
+        </form>
+
+        <p>Don't have an account? <a href="admin_register.php">Register here</a></p>
+        <p>Are you a <a href="../Technician/tech_login.php">Technician</a>?</p>
+    </div>
 </body>
-
-<p>Don't have an account? <a href="admin_register.php">Register here</a></p>
-<p>Are you a <a href="../Technician/tech_login.php">Technician</a>?</p>
-
 </html>
