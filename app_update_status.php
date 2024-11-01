@@ -8,7 +8,7 @@ if (!isset($_SESSION['tech_id']) && !isset($_SESSION['admin_id']) && !isset($_SE
 }
 
 // Connect to the database
-$conn = new mysqli("localhost", "root", "", "tire_service");
+$conn = new mysqli("localhost", "root", "", "hextire");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

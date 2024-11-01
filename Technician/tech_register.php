@@ -5,7 +5,7 @@
 session_start();
 
 // Connect to the database
-$conn = new mysqli("localhost", "root", "", "tire_service");
+$conn = new mysqli("localhost", "root", "", "hextire");
 
 // Check connection
 if ($conn->connect_error) {
@@ -55,23 +55,30 @@ $conn->close();
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Technician Registration</title>
+    <link rel="stylesheet" href="tech_styles.css"> <!-- Link to central CSS -->
 </head>
+
 <body>
 
-<h2>Technician Registration</h2>
-<form action="tech_register.php" method="POST">
-    First Name: <input type="text" name="first_name" required><br><br>
-    Last Name: <input type="text" name="last_name" required><br><br>
-    Email: <input type="email" name="email" required><br><br>
-    Phone Number: <input type="text" name="phone_number" required><br><br>
-    Password: <input type="password" name="password" required><br><br>
-    <!-- Clearance ID is no longer selectable by the technician, it defaults to 1 -->
-    <input type="submit" value="Register">
-</form>
+    <div class="form-container">
+        <h2>Technician Registration</h2>
 
-<p>Hey there, if you've been here for a while? <a href="tech_login.php">Login here</a></p>
+        <form action="tech_register.php" method="POST">
+            First Name: <input type="text" name="first_name" required><br><br>
+            Last Name: <input type="text" name="last_name" required><br><br>
+            Email: <input type="email" name="email" required><br><br>
+            Phone Number: <input type="text" name="phone_number" required><br><br>
+            Password: <input type="password" name="password" required><br><br>
+            <!-- Clearance ID is no longer selectable by the technician, it defaults to 1 -->
+            <input type="submit" value="Register">
+        </form>
+
+        <p>Hey there, if you've been here for a while? <a href="tech_login.php">Login here</a></p>
+    </div>
 
 </body>
+
 </html>

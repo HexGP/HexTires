@@ -3,7 +3,7 @@
 session_start();
 
 // Connect to the database
-$conn = new mysqli("localhost", "root", "", "tire_service");
+$conn = new mysqli("localhost", "root", "", "hextire");
 
 // Check connection
 if ($conn->connect_error) {

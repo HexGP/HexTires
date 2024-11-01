@@ -2,7 +2,7 @@
 session_start();
 
 // Connect to the database
-$conn = new mysqli("localhost", "root", "", "tire_service");
+$conn = new mysqli("localhost", "root", "", "hextire");
 
 // Check connection
 if ($conn->connect_error) {
@@ -48,21 +48,27 @@ $conn->close();
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Technician Login</title>
+    <link rel="stylesheet" href="tech_styles.css"> <!-- Link to central CSS -->
 </head>
+
 <body>
 
-<h2>Technician Login</h2>
-<form action="tech_login.php" method="POST">
-    Email: <input type="email" name="email" required><br><br>
-    Password: <input type="password" name="password" required><br><br>
-    <input type="submit" value="Login">
-</form>
+    <div class="form-container">
+        <h2>Technician Login</h2>
+        <form action="tech_login.php" method="POST">
+            Email: <input type="email" name="email" required><br><br>
+            Password: <input type="password" name="password" required><br><br>
+            <input type="submit" value="Login">
+        </form>
 
-<p>Are you a new technician? <a href="tech_register.php">Register here</a></p>
-<p>Don't work <a href="../Client/client_login.php">here</a>?</p>
-<p>Admins login <a href="../Admin/admin_login.php">here</a>?</p>
+        <p>Are you a new technician? <a href="tech_register.php">Register here</a></p>
+        <p>Don't work <a href="../Client/client_login.php">here</a>?</p>
+        <p>Admins login <a href="../Admin/admin_login.php">here</a>?</p>
+    </div>
 
 </body>
+
 </html>

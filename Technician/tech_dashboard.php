@@ -8,7 +8,7 @@ if (!isset($_SESSION['tech_id'])) {
 }
 
 // Connect to the database
-$conn = new mysqli("localhost", "root", "", "tire_service");
+$conn = new mysqli("localhost", "root", "", "hextire");
 
 // Check connection
 if ($conn->connect_error) {
@@ -111,7 +111,7 @@ $conn->close();
 
 <head>
     <title>Technician Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="tech_styles.css">
 </head>
 
 <body>

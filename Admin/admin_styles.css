@@ -128,8 +128,8 @@ body {
 .dashboard-grid {
     display: grid;
     grid-template-areas: 
-        "appointments appointments technician"
-        "services display clients";
+        "appointments appointments services"
+        "technician display clients";
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1.5fr 1fr;
     gap: 10px; /* Reduce gap */
