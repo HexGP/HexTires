@@ -1,5 +1,4 @@
 <?php
-// Start the session
 session_start();
 
 // Connect to the database
@@ -9,6 +8,8 @@ $conn = new mysqli("localhost", "root", "", "hextire");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+$error_message = ""; // Variable to store error messages
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
@@ -31,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: client_dashboard.php");
             exit();
         } else {
-            echo "Invalid password.";
+            $error_message = "Invalid password.";
         }
     } else {
-        echo "No user found with this email.";
+        $error_message = "No user found with this email.";
     }
 }
 
@@ -42,13 +43,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 
-<!-- Sign-In Form -->
-<h2>Client Login</h2>
-<form method="POST" action="">
-    Email: <input type="email" name="email" required><br><br>
-    Password: <input type="password" name="password" required><br><br>
-    <input type="submit" value="Sign In">
-</form>
+<!DOCTYPE html>
+<html>
 
-<p>Don't have an account? <a href="client_register.php">Register here</a></p>
-<p>Are you a <a href="../Technician/tech_login.php">Technician</a>?</p>
+<head>
+    <title>Client Login</title>
+    <link rel="stylesheet" type="text/css" href="client_styles.css">
+</head>
+
+<main>
+
+    <body>
+        <div class="form-container">
+            <div class="back-button-container">
+                <button onclick="window.location.href='../index.php'" class="back-button">&laquo; Go Back</button>
+            </div>
+
+            <h2>Client Login</h2>
+            <p>
+            Welcome back! Please log in to access your account.
+            </p>
+            <?php if (!empty($error_message)) : ?>
+            <div class="error-message"><?php echo $error_message; ?></div>
+            <?php endif; ?>
+
+            <form method="POST" action="">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+
+                <input type="submit" value="Login">
+                <input type="button" value="Sign Up" onclick="window.location.href='client_register.php'">
+            </form>
+
+            <p>Are you a<a href="../Technician/tech_login.php">Technician</a>?</p>
+        </div>
+    </body>
+
+</html>
+</main>

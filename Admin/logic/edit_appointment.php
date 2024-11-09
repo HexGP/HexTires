@@ -59,6 +59,7 @@ $conn->close();
 
 <head>
     <title>Edit Appointment</title>
+    <link rel="stylesheet" type="text/css" href="manage_styles.css">
     <script>
     function confirmStatusChange() {
         return confirm('Are you sure you want to change the appointment status?');

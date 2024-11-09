@@ -59,11 +59,7 @@ $conn->close();
 
 <head>
     <title>Edit Technician</title>
-    <!-- <script>
-    function confirmUpdate() {
-        return confirm('Are you sure you want to update this technician?');
-    }
-    </script> -->
+    <link rel="stylesheet" type="text/css" href="manage_styles.css">
 </head>
 
 <body>
@@ -74,30 +70,29 @@ $conn->close();
         <input type="submit" value="Back to Technicians">
     </form>
 
-    <form action="edit_technician.php?technician_id=<?php echo $tech_id; ?>" method="POST"
-        onsubmit="return confirmUpdate();">
+    <form action="edit_technician.php?technician_id=<?php echo $tech_id; ?>" method="POST" class="compact-form">
         <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" value="<?php echo $tech['first_name']; ?>" required><br>
+        <input type="text" name="first_name" value="<?php echo htmlspecialchars($tech['first_name']); ?>" required>
 
         <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" value="<?php echo $tech['last_name']; ?>" required><br>
+        <input type="text" name="last_name" value="<?php echo htmlspecialchars($tech['last_name']); ?>" required>
 
         <label for="email">Email:</label>
-        <input type="email" name="email" value="<?php echo $tech['email']; ?>" required><br>
+        <input type="email" name="email" value="<?php echo htmlspecialchars($tech['email']); ?>" required>
 
         <label for="phone_number">Phone Number:</label>
-        <input type="text" name="phone_number" value="<?php echo $tech['phone_number']; ?>" required><br>
+        <input type="text" name="phone_number" value="<?php echo htmlspecialchars($tech['phone_number']); ?>" required>
 
-        <label for="clearance_id">Clearance Level:</label>
+        <label for="clearance_id">Clearance:</label>
         <select name="clearance_id" required>
-            <option value="1" <?php echo $tech['clearance_id'] == 1 ? 'selected' : ''; ?>>Basic Service</option>
-            <option value="2" <?php echo $tech['clearance_id'] == 2 ? 'selected' : ''; ?>>Advanced Service</option>
-            <option value="3" <?php echo $tech['clearance_id'] == 3 ? 'selected' : ''; ?>>Specialist Service</option>
-            <option value="4" <?php echo $tech['clearance_id'] == 4 ? 'selected' : ''; ?>>Expert Service</option>
-        </select><br>
+            <option value="1" <?php echo $tech['clearance_id'] == 1 ? 'selected' : ''; ?>>Basic</option>
+            <option value="2" <?php echo $tech['clearance_id'] == 2 ? 'selected' : ''; ?>>Advanced</option>
+            <option value="3" <?php echo $tech['clearance_id'] == 3 ? 'selected' : ''; ?>>Specialist</option>
+            <option value="4" <?php echo $tech['clearance_id'] == 4 ? 'selected' : ''; ?>>Expert</option>
+        </select>
 
-        <label for="is_inhouse">Is In-House Technician?</label>
-        <input type="checkbox" name="is_inhouse" value="1" <?php echo $tech['is_inhouse'] ? 'checked' : ''; ?>><br>
+        <label for="is_inhouse" class="inline-label">In-House?</label>
+        <input type="checkbox" name="is_inhouse" value="1" <?php echo $tech['is_inhouse'] ? 'checked' : ''; ?>>
 
         <input type="submit" value="Update Technician">
     </form>

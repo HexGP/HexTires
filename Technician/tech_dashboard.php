@@ -105,7 +105,6 @@ $completed_result = $conn->query($completed_sql);
 // Close the connection
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -119,20 +118,14 @@ $conn->close();
     <h1>Welcome, <?php echo $tech_info['first_name'] . ' ' . $tech_info['last_name']; ?></h1>
 
     <!-- Profile Information -->
-    <h2>My Profile</h2>
+    <h2>Profile</h2>
     <p><strong>Email:</strong> <?php echo $tech_info['email']; ?></p>
     <p><strong>Phone Number:</strong> <?php echo $tech_info['phone_number']; ?></p>
     <p><strong>Clearance Level:</strong> <?php echo $tech_info['clearance_name']; ?></p>
 
-    <h2>Update My Profile</h2>
-    <form action="tech_update_profile.php" method="POST">
-        <label for="email">Email:</label>
-        <input type="email" name="email" value="<?php echo $_SESSION['tech_email']; ?>" required><br>
-
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" name="phone_number" value="<?php echo $_SESSION['tech_phone']; ?>" required><br>
-
-        <input type="submit" value="Update Profile">
+    <!-- Redirect to Update Profile Page -->
+    <form action="tech_update_profile.php" method="GET">
+        <input type="submit" value="Edit Profile">
     </form>
 
     <!-- Logout Button -->
@@ -145,7 +138,6 @@ $conn->close();
     <a href="tech_dashboard.php?filter=accepted">Accepted Appointments</a> |
     <a href="tech_dashboard.php?filter=completed">Completed/Approved Appointments</a> |
     <a href="tech_dashboard.php?filter=cancelled">Cancelled Appointments</a>
-
 
     <!-- Display filtered appointments -->
     <?php if ($appointments_result->num_rows > 0): ?>
@@ -232,7 +224,6 @@ $conn->close();
         return confirm(message); // Shows the confirmation dialog
     }
     </script>
-
 
 </body>
 

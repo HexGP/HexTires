@@ -74,6 +74,7 @@ $conn->close();
 <html>
 <head>
     <title>Manage Appointments</title>
+    <link rel="stylesheet" type="text/css" href="manage_styles.css">
     <script>
     // Confirmation dialog for marking complete
     function confirmCompletion() {

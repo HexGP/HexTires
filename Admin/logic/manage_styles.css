@@ -1,0 +1,235 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #ecf0f1;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #bdc3c7;
+    font-size: 1.4rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Container for the main content */
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Left Section - Table */
+.table-section {
+    width: 60%;
+    background-color: #34495e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Right Section - Form */
+.form-section {
+    width: 35%;
+    background-color: #34495e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #34495e;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #3d566e;
+}
+
+th {
+    background-color: #1abc9c;
+    color: #ecf0f1;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+tr:hover {
+    background-color: #3a4d63;
+}
+
+tr:nth-child(even) {
+    background-color: #3d566e;
+}
+
+/* Button Styling */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #1abc9c;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #16a085;
+}
+
+/* Red Delete Button */
+.delete-button {
+    background-color: #e74c3c !important;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.delete-button:hover {
+    background-color: #c0392b !important;
+}
+
+/* Form Styling */
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+    color: #bdc3c7;
+}
+
+input[type="text"], input[type="number"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #3d566e;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="submit"] {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #16a085;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .table-section, .form-section {
+        width: 100%;
+    }
+}
+
+/* Compact Form Styling */
+.compact-form {
+    max-width: 500px;
+    margin: 20px 0;
+}
+
+.compact-form label {
+    font-weight: bold;
+    margin-top: 8px;
+    display: inline-block;
+}
+
+.compact-form input[type="text"],
+.compact-form input[type="email"],
+.compact-form input[type="number"],
+.compact-form select {
+    width: 100%;
+    padding: 6px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #3d566e;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+.compact-form .inline-label {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.compact-form input[type="checkbox"] {
+    margin-top: 5px;
+}
+
+.compact-form input[type="submit"] {
+    margin-top: 15px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.compact-form input[type="submit"]:hover {
+    background-color: #16a085;
+}
+
+/* Highlight for Sorted Column Header */
+th.sorted-asc,
+th.sorted-desc {
+    background-color: #1abc9c; /* Brighter background color for sorted column */
+    background-color: #1abc9c; /* Brighter background color for sorted column */
+    color: #ffffff; /* White text for better contrast */
+    font-weight: bold;
+    border: 2px solid #16a085; /* Add a box-like border for emphasis */
+    border-radius: 4px; /* Slight rounding for a box effect */
+    padding: 10px; /* Add padding to enhance the box appearance */
+}
+
+/* Styling for links inside header */
+th a {
+    color: inherit; /* Inherit color from the th for sorted header */
+    text-decoration: none; /* Remove underline by default */
+}
+
+th a:hover {
+    text-decoration: underline;
+}

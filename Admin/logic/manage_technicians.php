@@ -52,6 +52,7 @@ $conn->close();
 
 <head>
     <title>Manage Technicians</title>
+    <link rel="stylesheet" type="text/css" href="manage_styles.css">
 </head>
 
 <body>
@@ -62,64 +63,77 @@ $conn->close();
         <input type="submit" value="Dashboard" class="button">
     </form>
 
-    <!-- Add Technician Form -->
-    <h2>Add New Technician</h2>
-    <form action="add_technician.php" method="POST">
-        <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" required><br>
-        <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" required><br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" name="phone_number" required><br>
-        <label for="clearance_id">Clearance Level:</label>
-        <select name="clearance_id" required>
-            <option value="1">Basic Service</option>
-            <option value="2">Advanced Service</option>
-            <option value="3">Specialist Service</option>
-            <option value="4">Expert Service</option>
-        </select><br>
-        <input type="submit" value="Add Technician">
-    </form>
+    <div class="container">
+        <!-- Left Section: Technician List Table -->
+        <div class="table-section">
+            <h2>Technician List</h2>
+            <?php if ($tech_result->num_rows > 0): ?>
+            <table border="1">
+                <tr>
+                    <th><a href="?sort=technician_id&order=<?php echo $next_sort_order; ?>">ID</a></th>
+                    <th><a href="?sort=first_name&order=<?php echo $next_sort_order; ?>">Name</a></th>
+                    <th><a href="?sort=email&order=<?php echo $next_sort_order; ?>">Email</a></th>
+                    <th><a href="?sort=phone_number&order=<?php echo $next_sort_order; ?>">Phone Number</a></th>
+                    <th><a href="?sort=is_inhouse&order=<?php echo $next_sort_order; ?>">Employee/Contractor</a></th>
+                    <th><a href="?sort=clearance_name&order=<?php echo $next_sort_order; ?>">Clearance</a></th>
+                    <th>Actions</th>
+                </tr>
+                <?php while ($row = $tech_result->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo $row['technician_id']; ?></td>
+                    <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['phone_number']; ?></td>
+                    <td><?php echo $row['is_inhouse'] ? 'Employee' : 'Contractor'; ?></td>
+                    <td><?php echo $row['clearance_name']; ?></td>
+                    <td>
+                        <form method="POST" action="" style="display:inline;">
+                            <input type="hidden" name="technician_id" value="<?php echo $row['technician_id']; ?>">
+                            <input type="submit" name="delete_technician" value="Delete" class="delete-button"
+                                onclick="return confirm('Are you sure you want to delete this technician?');">
+                        </form>
 
-    <!-- Technician List with sortable columns -->
-    <h2>Technician List</h2>
-    <?php if ($tech_result->num_rows > 0): ?>
-    <table border="1">
-        <tr>
-            <th><a href="?sort=technician_id&order=<?php echo $next_sort_order; ?>">ID</a></th>
-            <th><a href="?sort=first_name&order=<?php echo $next_sort_order; ?>">Name</a></th>
-            <th><a href="?sort=email&order=<?php echo $next_sort_order; ?>">Email</a></th>
-            <th><a href="?sort=phone_number&order=<?php echo $next_sort_order; ?>">Phone Number</a></th>
-            <th><a href="?sort=is_inhouse&order=<?php echo $next_sort_order; ?>">Employee/Contractor</a></th>
-            <th><a href="?sort=clearance_name&order=<?php echo $next_sort_order; ?>">Clearance</a></th>
-            <th>Actions</th>
-        </tr>
-        <?php while ($row = $tech_result->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo $row['technician_id']; ?></td>
-            <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
-            <td><?php echo $row['email']; ?></td>
-            <td><?php echo $row['phone_number']; ?></td>
-            <td><?php echo $row['is_inhouse'] ? 'Employee' : 'Contractor'; ?></td>
-            <td><?php echo $row['clearance_name']; ?></td> <!-- Use clearance_name instead of clearance_id -->
-            <td>
-                <form method="POST" action="" style="display:inline;">
-                    <input type="hidden" name="technician_id" value="<?php echo $row['technician_id']; ?>">
-                    <input type="submit" name="delete_technician" value="Delete">
-                </form>
-                <form method="GET" action="edit_technician.php" style="display:inline;">
-                    <input type="hidden" name="technician_id" value="<?php echo $row['technician_id']; ?>">
-                    <input type="submit" value="Edit Tech Details" class="button">
-                </form>
-            </td>
-        </tr>
-        <?php endwhile; ?>
-    </table>
-    <?php else: ?>
-    <p>No technicians found.</p>
-    <?php endif; ?>
+                        <form method="GET" action="edit_technician.php" style="display:inline;">
+                            <input type="hidden" name="technician_id" value="<?php echo $row['technician_id']; ?>">
+                            <input type="submit" value="Edit Tech Details" class="button">
+                        </form>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            </table>
+            <?php else: ?>
+            <p>No technicians found.</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Right Section: Add New Technician Form -->
+        <div class="form-section">
+            <h2>Add New Technician</h2>
+            <form action="add_technician.php" method="POST">
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" required>
+
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" required>
+
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" name="phone_number" required>
+
+                <label for="clearance_id">Clearance Level:</label>
+                <select name="clearance_id" required>
+                    <option value="1">Basic Service</option>
+                    <option value="2">Advanced Service</option>
+                    <option value="3">Specialist Service</option>
+                    <option value="4">Expert Service</option>
+                </select>
+
+                <input type="submit" value="Add Technician">
+            </form>
+        </div>
+    </div>
 
 </body>
 

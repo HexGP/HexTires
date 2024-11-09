@@ -44,10 +44,12 @@ $conn->close();
 
 <!DOCTYPE html>
 <html>
-<head>
+
+<!-- <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="admin_styles.css"> <!-- Link to central CSS -->
+    <link rel="stylesheet" href="admin_styles.css">
 </head>
+
 <body>
     <div class="form-container">
         <h2>Login as Admin</h2>
@@ -61,8 +63,44 @@ $conn->close();
             <input type="submit" value="Login">
         </form>
 
-        <p>Don't have an account? <a href="admin_register.php">Register here</a></p>
-        <p>Are you a <a href="../Technician/tech_login.php">Technician</a>?</p>
+        <p>Are you a<a href="../Technician/tech_login.php">Technician</a>?</p>
     </div>
-</body>
+</body> -->
+
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="admin_styles.css"> <!-- Link to central CSS -->
+</head>
+
+<main>
+
+    <body>
+        <div class="form-container">
+            <div class="back-button-container">
+                <button onclick="window.location.href='../index.php'" class="back-button">&laquo; Go Back</button>
+            </div>
+
+            <h2>Admin Login</h2>
+
+            <?php if (!empty($error_message)) : ?>
+            <div class="error-message"><?php echo $error_message; ?></div>
+            <?php endif; ?>
+
+            <form method="POST" action="">
+                <label>Email:</label>
+                <input type="email" name="email" required>
+
+                <label>Password:</label>
+                <input type="password" name="password" required>
+
+                <input type="submit" value="Login">
+                <input type="button" value="Sign Up" onclick="window.location.href='admin_register.php'">
+            </form>
+
+            <p>Are you a<a href="../Technician/tech_login.php">Technician</a>?</p>
+        </div>
+    </body>
+</html>
+</main>
+
 </html>

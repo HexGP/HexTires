@@ -29,7 +29,7 @@ $admin = $result->fetch_assoc();
 $admin_img = base64_encode($admin['admin_Img']);
 $img_src = "data:image/png;base64," . $admin_img;
 
-// Fetch data for each section
+// Fetch data for appointment section
 $appointments_sql = "SELECT a.appointment_id, a.appointment_date, a.appointment_time, s.service_name, 
            c.first_name AS client_first_name, c.last_name AS client_last_name, 
            t.first_name AS tech_first_name, t.last_name AS tech_last_name, a.appointment_status
@@ -40,13 +40,16 @@ $appointments_sql = "SELECT a.appointment_id, a.appointment_date, a.appointment_
     ORDER BY appointment_date DESC LIMIT 5";
 $appointments_result = $conn->query($appointments_sql);
 
-$technicians_sql = "SELECT technician_id, first_name, last_name, email, phone_number FROM Technicians ORDER BY technician_id DESC LIMIT 5";
+// Fetch data for appointment section
+$technicians_sql = "SELECT technician_id, first_name, last_name, email, phone_number FROM Technicians ORDER BY technician_id DESC LIMIT 15";
 $technicians_result = $conn->query($technicians_sql);
 
-$clients_sql = "SELECT client_id, first_name, last_name, email, phone_number FROM Clients ORDER BY client_id DESC LIMIT 5";
+// Fetch data for client section
+$clients_sql = "SELECT client_id, first_name, last_name, email, phone_number FROM Clients ORDER BY client_id DESC LIMIT 15";
 $clients_result = $conn->query($clients_sql);
 
-$services_sql = "SELECT service_id, service_name, service_price FROM Services ORDER BY service_id DESC LIMIT 5";
+// Fetch data for services section
+$services_sql = "SELECT service_id, service_name, service_price FROM Services ORDER BY service_id ASC LIMIT 25";
 $services_result = $conn->query($services_sql);
 
 $conn->close();

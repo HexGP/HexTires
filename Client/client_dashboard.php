@@ -97,132 +97,143 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Client Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+<main>
 
-<body>
+    <head>
+        <title>Client Dashboard</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="client_styles.css">
+    </head>
 
-    <h1>Welcome, <?php echo $client_info['first_name'] . ' ' . $client_info['last_name']; ?></h1>
+    <body>
 
-    <!-- Profile Information -->
-    <h2>Profile Information</h2>
-    <p><strong>Email:</strong> <?php echo $client_info['email']; ?></p>
-    <p><strong>Phone Number:</strong> <?php echo $client_info['phone_number']; ?></p>
+        <h1>Welcome, <?php echo $client_info['first_name'] . ' ' . $client_info['last_name']; ?></h1>
 
-    <!-- Logout Button -->
-    <form action="client_logout.php" method="POST">
-        <input type="submit" value="Logout">
-    </form>
+        <!-- Profile Information -->
+        <h2>Profile Information</h2>
+        <p><strong>Email:</strong> <?php echo $client_info['email']; ?></p>
+        <p><strong>Phone Number:</strong> <?php echo $client_info['phone_number']; ?></p>
 
-    <!-- Upcoming Appointments -->
-    <h2>My Appointments</h2>
-    <!-- Display filtered appointments -->
-    <?php if ($appointments_result->num_rows > 0): ?>
-    <table border="1">
-        <tr>
-            <th>Service</th>
-            <th>Technician</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-        <?php while ($row = $appointments_result->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo $row['service_name']; ?></td>
-            <td><?php echo $row['tech_first_name'] . ' ' . $row['tech_last_name']; ?></td>
-            <td><?php echo $row['appointment_date']; ?></td>
-            <td><?php echo $row['appointment_time']; ?></td>
-            <td><?php echo ucfirst($row['appointment_status']); ?></td>
-            <td>
-                <!-- If status is 'requested' or 'scheduled', allow cancel/edit actions -->
-                <?php if ($row['appointment_status'] == 'requested' || $row['appointment_status'] == 'scheduled'): ?>
-                <!-- Cancel Appointment -->
-                <form method="POST" action="../app_update_status.php" style="display:inline;">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <input type="hidden" name="new_status" value="cancelled">
-                    <input type="submit" name="cancel_appointment" value="Cancel">
-                </form>
+        <!-- Logout Button -->
+        <form action="client_logout.php" method="POST">
+            <button type="submit" name="logout">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+        </form>
 
-                <!-- Edit Appointment -->
-                <form method="GET" action="edit_appointment.php" style="display:inline;">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <input type="submit" value="Edit">
-                </form>
+        <!-- Upcoming Appointments -->
+        <h2>My Appointments</h2>
+        <!-- Display filtered appointments -->
+        <?php if ($appointments_result->num_rows > 0): ?>
+        <table border="1">
+            <tr>
+                <th>Service</th>
+                <th>Technician</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            <?php while ($row = $appointments_result->fetch_assoc()): ?>
+            <tr>
+                <td><?php echo $row['service_name']; ?></td>
+                <td><?php echo $row['tech_first_name'] . ' ' . $row['tech_last_name']; ?></td>
+                <td><?php echo $row['appointment_date']; ?></td>
+                <td><?php echo $row['appointment_time']; ?></td>
+                <td><?php echo ucfirst($row['appointment_status']); ?></td>
+                <td>
+                    <!-- If status is 'requested' or 'scheduled', allow cancel/edit actions -->
+                    <?php if ($row['appointment_status'] == 'requested' || $row['appointment_status'] == 'scheduled'): ?>
+                    <!-- Cancel Appointment -->
+                    <form method="POST" action="../app_update_status.php" style="display:inline;">
+                        <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
+                        <input type="hidden" name="new_status" value="cancelled">
+                        <input type="submit" name="cancel_appointment" value="Cancel">
+                    </form>
 
-                <?php elseif ($row['appointment_status'] == 'in progress'): ?>
-                <p>No changes allowed during service.</p>
+                    <!-- Edit Appointment -->
+                    <form method="GET" action="edit_appointment.php" style="display:inline;">
+                        <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
+                        <input type="submit" value="Edit">
+                    </form>
 
-                <?php elseif ($row['appointment_status'] == 'tech approved'): ?>
+                    <?php elseif ($row['appointment_status'] == 'in progress'): ?>
+                    <p>No changes allowed during service.</p>
 
-                <!-- Rating Form -->
-                <form method="POST" action="client_rate_appointment.php" style="display:inline;">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <label for="rating">Rate (1-5):</label>
-                    <input type="number" name="rating" min="1" max="5" required>
-                    <input type="submit" name="rate_appointment" value="Submit Rating">
-                </form>
+                    <?php elseif ($row['appointment_status'] == 'tech approved'): ?>
 
-                <!-- Mark Done -->
-                <form method="POST" action="../app_update_status.php" style="display:inline;">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <input type="hidden" name="new_status" value="client approved">
-                    <input type="submit" name="mark_done" value="Mark Done">
-                </form>
-                <?php endif; ?>
+                    <!-- Rating Form -->
+                    <form method="POST" action="client_rate_appointment.php" style="display:inline;">
+                        <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
+                        <label for="rating">Rate (1-5):</label>
+                        <input type="number" name="rating" min="1" max="5" required>
+                        <input type="submit" name="rate_appointment" value="Submit Rating">
+                    </form>
 
-            </td>
-        </tr>
-        <?php endwhile; ?>
-    </table>
-    <?php else: ?>
-    <p>No appointments found.</p>
-    <?php endif; ?>
+                    <!-- Mark Done -->
+                    <form method="POST" action="../app_update_status.php" style="display:inline;">
+                        <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
+                        <input type="hidden" name="new_status" value="client approved">
+                        <input type="submit" name="mark_done" value="Mark Done">
+                    </form>
+                    <?php endif; ?>
+
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </table>
+        <?php else: ?>
+        <p>No appointments found.</p>
+        <?php endif; ?>
 
 
-    <!-- Cancelled Appointments Section -->
-    <h2>Cancelled Appointments</h2>
-    <?php
-if ($cancelled_appointments_result->num_rows > 0): ?>
-    <table border="1">
-        <tr>
-            <th>Service</th>
-            <th>Technician</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Actions</th>
-        </tr>
-        <?php while ($row = $cancelled_appointments_result->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo $row['service_name']; ?></td>
-            <td><?php echo $row['tech_first_name'] . ' ' . $row['tech_last_name']; ?></td>
-            <td><?php echo $row['appointment_date']; ?></td>
-            <td><?php echo $row['appointment_time']; ?></td>
-            <td>
-                <?php if ($row['minutes_since_cancellation'] <= 60): ?>
-                <!-- Revise Appointment Button (only available if cancelled within the last hour) -->
-                <form method="POST" action=""
-                    onsubmit="return confirm('Are you sure you want to revise this appointment?');">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <input type="submit" name="revise_appointment" value="Revise Appointment">
-                </form>
-                <?php else: ?>
-                <p>Revision time expired</p>
-                <?php endif; ?>
-            </td>
-        </tr>
-        <?php endwhile; ?>
-    </table>
-    <?php else: ?>
-    <p>No cancelled appointments.</p>
-    <?php endif; ?>
+        <!-- Cancelled Appointments Section -->
+        <h2>Cancelled Appointments</h2>
+        <?php
+    if ($cancelled_appointments_result->num_rows > 0): ?>
+        <table border="1">
+            <tr>
+                <th>Service</th>
+                <th>Technician</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+            <?php while ($row = $cancelled_appointments_result->fetch_assoc()): ?>
+            <tr>
+                <td><?php echo $row['service_name']; ?></td>
+                <td><?php echo $row['tech_first_name'] . ' ' . $row['tech_last_name']; ?></td>
+                <td><?php echo $row['appointment_date']; ?></td>
+                <td><?php echo $row['appointment_time']; ?></td>
+                <td>
+                    <?php if ($row['minutes_since_cancellation'] <= 60): ?>
+                    <!-- Revise Appointment Button (only available if cancelled within the last hour) -->
+                    <form method="POST" action=""
+                        onsubmit="return confirm('Are you sure you want to revise this appointment?');">
+                        <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
+                        <input type="submit" name="revise_appointment" value="Revise Appointment">
+                    </form>
+                    <?php else: ?>
+                    <p>Revision time expired</p>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </table>
+        <?php else: ?>
+        <p>No cancelled appointments.</p>
+        <?php endif; ?>
 
-    <!-- Button to request a new service -->
-    <h2>Request a New Service</h2>
-    <a href="request_service.php">Request New Service</a>
+        <!-- Button to request a new service -->
+        <h2>Request a New Service</h2>
+        <form action="request_service.php" method="POST">
+            <button type="submit" name="logout">
+                Request Service
+                <i class="fa-solid fa-car-side"></i>
+            </button>
+        </form>
 
-</body>
+    </body>
 
 </html>
+</main>

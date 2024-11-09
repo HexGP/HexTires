@@ -1,0 +1,304 @@
+/* General Body and Main Styles */
+body {
+    font-family: 'Lexend', sans-serif;
+    background-color: #1C1C1C;
+    color: #d1d1d1;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #2B2B2B;
+    padding: 15px 30px;
+    border-radius: 30px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+    width: 40px; /* Adjust size if needed */
+    height: 40px;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-nav .nav-link {
+    color: #b5b5b5;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* Signup and Login Button Styles */
+.btn-signup {
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #CAFF33;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+    margin-right: 10px;
+}
+
+.btn-signup:hover {
+    background-color: #333;
+    color: #CAFF33;
+}
+
+.btn-login {
+    background-color: #CAFF33;
+    color: #000;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #b4e625;
+    color: #000;
+}
+
+
+/* Button Styles */
+.btn-custom,
+.btn-outline-custom {
+    border-radius: 20px;
+    padding: 8px 15px;
+    transition: background-color 0.3s;
+}
+
+.btn-custom {
+    background-color: #CAFF33;
+    color: #000;
+}
+
+.btn-outline-custom {
+    color: #CAFF33;
+    border: 1px solid #CAFF33;
+}
+
+/* Section Titles and Highlights */
+.section-title {
+    color: #CAFF33;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: #CAFF33;
+    font-weight: bold;
+}
+
+
+.text-highlight {
+    color: #CAFF33;
+    font-weight: bold;
+}
+
+/* Featurette Section */
+.featurette {
+    /* color: #ffffff; */
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+
+
+.intro-text {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Service Section */
+.service-section .col-md-6:first-child p {
+    font-size: 0.9rem;
+}
+
+.service-item {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.service-item:hover {
+    transform: scale(1.05);
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.service-item h3 {
+    color: #CAFF33;
+}
+
+/* FAQ Section */
+.faq-section {
+    margin-top: 80px;
+}
+
+.faq-item {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.faq-item h5 {
+    color: #CAFF33;
+}
+
+.faq-item p {
+    color: #b5b5b5;
+}
+
+/* Testimonial Section */
+.testimonial-section {
+    margin-top: 80px;
+}
+
+.testimonial-card {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 20px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* CTA Section */
+.cta-section {
+    background-color: #2b2b2b;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.cta-section h3 {
+    color: #CAFF33;
+}
+
+/* Image Section */
+.img-fluid.rounded-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+.img-fluid.rounded-circle:hover {
+    box-shadow: 0 0 15px 5px #CAFF33; /* Adjust glow color and size */
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #121212;
+    color: #d1d1d1;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-logo-img {
+    max-height: 50px;
+    margin-bottom: 10px;
+}
+
+.footer-brand {
+    font-size: 1.5rem;
+    color: #CAFF33;
+    font-weight: bold;
+}
+
+.footer-nav,
+.footer-contact,
+.footer-legal {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-link,
+.footer-legal-link {
+    color: #CAFF33;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-link:hover,
+.footer-legal-link:hover {
+    color: #CAFF33;
+}
+
+.footer-divider {
+    border-top: 1px solid #2a2a2a;
+    margin: 20px 0;
+}
+
+.footer-contact-item i {
+    color: #CAFF33;
+    margin-right: 8px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #CAFF33;
+}
+
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

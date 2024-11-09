@@ -68,7 +68,7 @@ $conn->close();
 
 <head>
     <title>Manage Settings</title>
-    <link rel="stylesheet" href="../admin_styles.css">
+    <link rel="stylesheet" type="text/css" href="manage_styles.css">
 </head>
 
 <body>
