@@ -53,7 +53,7 @@ $conn->close();
 
 <main>
 
-    <body>
+    <body class="login-page">
         <div class="form-container">
             <div class="back-button-container">
                 <button onclick="window.location.href='../index.php'" class="back-button">&laquo; Go Back</button>

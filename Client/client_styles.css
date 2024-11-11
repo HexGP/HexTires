@@ -1,219 +1,49 @@
 /* =================== General Styles =================== */
-body {
+body.appointment {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ecf0f1;
     margin: 0;
-    background-color: #2B2B2B;
+    background-color: #1C1C1C;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height for login and register pages only */
 }
 
 h1, h2 {
     color: #CAFF33;
+    font-size: 2rem;
     margin-bottom: 10px;
 }
 
 h1 {
     font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 h2 {
     font-size: 1.8rem;
-}
-
-/* General Button Styling */
-button, input[type="submit"] {
-    background-color: #CAFF33;
-    color: #121212;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-button:hover, input[type="submit"]:hover {
-    background-color: #b8e328;
-}
-
-/* =================== Link and Text Styles =================== */
-a {
-    color: #CAFF33;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #CAFF33;
-}
-
-p {
-    margin: 5px 0;
-    font-size: 1rem;
-}
-
-/* =================== Form Styling =================== */
-form {
-    margin: 20px 0;
-}
-
-input[type="email"], input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0 15px;
-    box-sizing: border-box;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    background-color: #34495e;
-    color: #ecf0f1;
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-/* =================== Table Styling =================== */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background-color: #34495e;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-    border: 1px solid #2B2B2B;
-    color: #ecf0f1;
-}
-
-th {
-    background-color: #CAFF33;
-    color: white;
-    font-size: 1.1rem;
-}
-
-tr:nth-child(even) {
-    background-color: #4b4b4b;
-}
-
-tr:hover {
-    background-color: #3f5868;
-}
-
-/* Table action buttons */
-form[style="display:inline;"] input[type="submit"] {
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    margin-right: 5px;
-    background-color: #CAFF33;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-form[style="display:inline;"] input[type="submit"]:hover {
-    background-color: #CAFF33;
-}
-
-/* =================== Service Request Form Styling =================== */
-/* General Styling for Service Container */
-.service-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* min-height: 100vh; */
-    /* width: 100%; */
-    background-color: #2B2B2B;
-    color: #ecf0f1;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* Service Section Styling for Full Width */
-.service-section {
-    display: grid;
-    grid-template-rows: auto;
-    gap: 20px;
-    width: 100%;
-    max-width: 3000px; /* Expands the box to cover more screen width */
-    padding: 30px;
-    background-color: #1C1C1C;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease;
-}
-
-.service-section:hover {
-    box-shadow: 0 4px 20px rgba(202, 255, 51, 0.5);
-}
-
-/* Inner Form Row Grid Layout */
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    width: 100%;
-}
-
-/* Label Styling */
-.service-section label {
-    font-size: 1.1rem;
-    color: #CAFF33;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-/* Input and Select Styling */
-.service-section input[type="text"],
-.service-section input[type="email"],
-.service-section input[type="date"],
-.service-section input[type="time"],
-.service-section select,
-.service-section textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
     margin-bottom: 15px;
-    border: 1px solid #bdc3c7;
-    border-radius: 8px;
-    background-color: #34495e;
-    color: #ecf0f1;
-    font-size: 1rem;
 }
 
-/* Confirm Service Button Styling */
-.service-section button,
-.service-section input[type="submit"] {
-    background-color: #CAFF33;
-    color: #121212;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-    text-align: center;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+/* Welcome Text */
+p {
+    color: #d3d3d3;
+    font-weight: 300;
+    margin-bottom: 20px;
 }
 
-.service-section button:hover,
-.service-section input[type="submit"]:hover {
-    background-color: #b8e328;
-    box-shadow: 0 4px 15px rgba(202, 255, 51, 0.5);
-}
 
-/* Back Button Styling */
-.service-container .back-button {
-    display: inline-flex;
-    align-items: center;
+/* =================== Back Button Styling =================== */
+.back-button {
     background-color: #CAFF33;
     color: #121212;
     font-size: 0.9rem;
@@ -222,44 +52,226 @@ form[style="display:inline;"] input[type="submit"]:hover {
     border-radius: 20px;
     border: none;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
     transition: background-color 0.3s ease;
 }
 
-.service-container .back-button:hover {
+.back-button:hover {
     background-color: #b8e328;
 }
 
-.service-container .back-button i {
-    margin-right: 8px;
+/* =================== Appointment Container =================== */
+.appointment-container {
+    display: flex;
+    gap: 20px;
+    max-width: max-content;
+    margin: auto;
+    padding: 20px;
+    background-color: #1C1C1C;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group service-select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.service-form {
+    display: grid;
+    grid-template-areas: 
+        "car-type service-select"
+        "calendar time-slots "
+        "contact confirm";
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px; /* Reduce gap */
+    flex-grow: 1;
+    padding: 15px; /* Reduce padding */
+}
+/*-----------------------------------------------------------------*/
+
+.radio-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns */
+    grid-template-rows: repeat(4, auto); /* 4 rows */
+    gap: 10px;
+}
+
+.radio-option {
+    padding: 10px;
+    background-color: #2B2B2B;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.radio-option:hover {
+    background-color: #3B3B3B;
+}
+
+.radio-option.selected {
+    background-color: #CAFF33; /* Highlight color for selected option */
+    color: #121212; /* Dark text color for contrast */
+    font-weight: bold;
+}
+
+.service-details {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #444;
+    border-radius: 8px;
+    color: #CAFF33;
+}
+
+/*------------------------------------------------------------------*/
+
+/* Additional hover and focus effects */
+.service-select select:focus {
+    outline: none;
+    box-shadow: 0 0 5px #CAFF33; /* Add a subtle highlight on focus */
 }
 
 
+/* Each form group will look like a card */
+.form-group {
+    background-color: #444; /* Dark background for form groups */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    margin-top: 10px;
+}
 
-/* =================== Responsive Design =================== */
-@media (max-width: 768px) {
-    .service-section {
-        padding: 20px;
-    }
+/* Hover effect to give it a card feel */
+.form-group:hover {
+    box-shadow: 0 0 15px rgba(201, 255, 51, 0.955);
+}
 
-    .service-section label {
-        font-size: 1rem;
-    }
+/* Confirm button full width in its area */
+.service-confirm {
+    width: 100%;
+    padding: 15px;
+    background-color: #BADA55;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
 
-    .service-section input[type="text"],
-    .service-section input[type="email"],
-    .service-section input[type="date"],
-    .service-section input[type="time"],
-    .service-section select,
-    .service-section textarea {
-        font-size: 0.95rem;
-    }
+.service-confirm:hover {
+    background-color: #A9D432;
+}
+
+/* Car Type Radio Options */
+.radio-option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #1C1C1C;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.radio-option:hover {
+    background-color: #BADA55;
+}
+
+.radio-option input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #CAFF33;
+    background-color: #CAFF33;
+}
+
+
+/* Calendar and Time Slots */
+.calendar, .time-slots {
+    background-color: #555;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Time Slot Selection Styling */
+#time-slots {
+    display: flex;
+    flex-wrap: wrap; /* Makes sure time slots are displayed horizontally and wrap if needed */
+    gap: 10px; /* Space between the time slots */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Individual Time Slot Styling */
+.time-slot {
+    background-color: #000; /* Black color for default */
+    color: #ecf0f1; /* Light text color */
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover State for Time Slots */
+.time-slot:hover {
+    background-color: #BADA55; /* Highlight color on hover */
+}
+
+/* Selected State for Time Slots */
+.time-slot.selected {
+    background-color: #CAFF33; /* Different color for selected state */
+    color: #121212; /* Darker text color for contrast */
+    font-weight: bold;
+}
+
+/* Inline Calendar Styling */
+#inline-calendar .flatpickr-day {
+    background-color: #1C1C1C; /* Default dark background for days */
+    color: #1C1C1C; /* Light text color */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover Effect on Calendar Days */
+#inline-calendar .flatpickr-day:hover {
+    background-color: #b8e328; /* Hover color */
+}
+
+/* Selected Day Style */
+#inline-calendar .flatpickr-day.selected,
+#inline-calendar .flatpickr-day.startRange,
+#inline-calendar .flatpickr-day.endRange {
+    background-color: #CAFF33 !important; /* Apply selected color */
+    color: #121212 !important; /* Dark text for contrast */
+}
+
+/* Today’s Date Styling (if you want to differentiate it) */
+#inline-calendar .flatpickr-day.today {
+    border: 1px solid #CAFF33; /* Highlight today's date */
+    color: #CAFF33; /* Same color for text to match selected */
+}
+
+
+/* Contact Information Inputs */
+.contact label {
+    color: #CAFF33;
+    margin-top: 10px;
 }
 
 /* =================== Login and Register Styles =================== */
 .form-container {
     width: 100%;
     max-width: 400px;
-    margin: 50px auto;
     background-color: #1C1C1C;
     padding: 20px;
     border-radius: 8px;
@@ -280,10 +292,12 @@ form[style="display:inline;"] input[type="submit"]:hover {
     color: #ecf0f1;
 }
 
+/* Input and Select Styling */
 .column-form input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="text"] {
+input[type="text"],
+input[type="tel"] {
     width: 100%;
     padding: 15px;
     margin-bottom: 10px;
@@ -293,6 +307,7 @@ input[type="text"] {
     font-size: 1rem;
     color: #ecf0f1;
     text-align: center;
+    box-sizing: border-box; /* Ensures padding doesn't increase width */
 }
 
 /* Button Styling */
@@ -317,19 +332,6 @@ input[type="button"]:hover {
 }
 
 
-/* Title Styling */
-h1 {
-    color: #CAFF33;
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-/* Welcome Text */
-p {
-    color: #d3d3d3;
-    font-weight: 300;
-    margin-bottom: 20px;
-}
 
 /* Go Back Button Styling */
 .back-button-container {
@@ -352,3 +354,24 @@ p {
     background-color: #b8e328;
 }
 
+/* =================== Responsive Design =================== */
+/* @media (max-width: 768px) {
+    .service-section {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "car-type"
+            "service-selection"
+            "calendar"
+            "time-slots"
+            "contact"
+            "confirm";
+    }
+
+    .form-group {
+        padding: 15px;
+    }
+
+    .service-confirm {
+        padding: 10px;
+    }
+} */

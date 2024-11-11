@@ -55,8 +55,7 @@ $conn->close();
     <link rel="stylesheet" type="text/css" href="client_styles.css">
 </head>
 
-<body>
-
+<body class="login-page">
     <div class="form-container">
         <h2>Register</h2>
         <p>
