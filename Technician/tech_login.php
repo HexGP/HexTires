@@ -51,24 +51,31 @@ $conn->close();
 
 <head>
     <title>Technician Login</title>
-    <link rel="stylesheet" href="tech_styles.css"> <!-- Link to central CSS -->
+    <link rel="stylesheet" type="text/css" href="tech_styles.css">
 </head>
 
-<body>
-
+<body class="login-page">
     <div class="form-container">
+        <div class="back-button-container">
+            <button onclick="window.location.href='../index.php'" class="back-button">&laquo; Go Back</button>
+        </div>
+
         <h2>Technician Login</h2>
-        <form action="tech_login.php" method="POST">
-            Email: <input type="email" name="email" required><br><br>
-            Password: <input type="password" name="password" required><br><br>
+        <p>
+            Please log into your Technician account.
+        </p>
+        <?php if (!empty($error_message)) : ?>
+        <div class="error-message"><?php echo $error_message; ?></div>
+        <?php endif; ?>
+
+        <form method="POST" action="">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+
             <input type="submit" value="Login">
+            <input type="button" value="Sign Up" onclick="window.location.href='tech_register.php'">
         </form>
-
-        <p>Are you a new technician? <a href="tech_register.php">Register here</a></p>
-        <p>Don't work <a href="../Client/client_login.php">here</a>?</p>
-        <p>Admins login <a href="../Admin/admin_login.php">here</a>?</p>
     </div>
-
 </body>
 
 </html>

@@ -113,118 +113,147 @@ $conn->close();
     <link rel="stylesheet" type="text/css" href="tech_styles.css">
 </head>
 
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technician Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="appointment">
+    <h1>Technician Dashboard</h1>
 
-    <h1>Welcome, <?php echo $tech_info['first_name'] . ' ' . $tech_info['last_name']; ?></h1>
+    <div class="appointment-container">
+        <!-- Available Appointments Section -->
+        <section class="form-group">
+            <h2>Available Appointments</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Client Name</th>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Fetch and display available appointments
+                    // Example query: SELECT * FROM Appointments WHERE status='Available'
+                    // while ($row = $result->fetch_assoc()):
+                    ?>
+                    <tr>
+                        <td><?php /* echo $row['appointment_id']; */ ?></td>
+                        <td><?php /* echo $row['client_name']; */ ?></td>
+                        <td><?php /* echo $row['service_name']; */ ?></td>
+                        <td><?php /* echo $row['date']; */ ?></td>
+                        <td><?php /* echo $row['time']; */ ?></td>
+                        <td><button class="service-confirm">Accept</button></td>
+                    </tr>
+                    <?php // endwhile; ?>
+                </tbody>
+            </table>
+        </section>
 
-    <!-- Profile Information -->
-    <h2>Profile</h2>
-    <p><strong>Email:</strong> <?php echo $tech_info['email']; ?></p>
-    <p><strong>Phone Number:</strong> <?php echo $tech_info['phone_number']; ?></p>
-    <p><strong>Clearance Level:</strong> <?php echo $tech_info['clearance_name']; ?></p>
+        <!-- Accepted Appointments Section -->
+        <section class="form-group">
+            <h2>Accepted Appointments</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Client Name</th>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Fetch and display accepted appointments
+                    // Example query: SELECT * FROM Appointments WHERE status='Accepted'
+                    ?>
+                    <tr>
+                        <td><?php /* echo $row['appointment_id']; */ ?></td>
+                        <td><?php /* echo $row['client_name']; */ ?></td>
+                        <td><?php /* echo $row['service_name']; */ ?></td>
+                        <td><?php /* echo $row['date']; */ ?></td>
+                        <td><?php /* echo $row['time']; */ ?></td>
+                        <td>Accepted</td>
+                    </tr>
+                    <?php // endwhile; ?>
+                </tbody>
+            </table>
+        </section>
 
-    <!-- Redirect to Update Profile Page -->
-    <form action="tech_update_profile.php" method="GET">
-        <input type="submit" value="Edit Profile">
-    </form>
+        <!-- Completed/Approved Appointments Section -->
+        <section class="form-group">
+            <h2>Completed/Approved Appointments</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Client Name</th>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Fetch and display completed or approved appointments
+                    // Example query: SELECT * FROM Appointments WHERE status='Completed' OR status='Approved'
+                    ?>
+                    <tr>
+                        <td><?php /* echo $row['appointment_id']; */ ?></td>
+                        <td><?php /* echo $row['client_name']; */ ?></td>
+                        <td><?php /* echo $row['service_name']; */ ?></td>
+                        <td><?php /* echo $row['date']; */ ?></td>
+                        <td><?php /* echo $row['time']; */ ?></td>
+                        <td>Completed</td>
+                    </tr>
+                    <?php // endwhile; ?>
+                </tbody>
+            </table>
+        </section>
 
-    <!-- Logout Button -->
-    <form action="tech_logout.php" method="POST">
-        <input type="submit" value="Logout">
-    </form>
-
-    <h2>Filter Appointments</h2>
-    <a href="tech_dashboard.php?filter=available">Available Appointments</a> |
-    <a href="tech_dashboard.php?filter=accepted">Accepted Appointments</a> |
-    <a href="tech_dashboard.php?filter=completed">Completed/Approved Appointments</a> |
-    <a href="tech_dashboard.php?filter=cancelled">Cancelled Appointments</a>
-
-    <!-- Display filtered appointments -->
-    <?php if ($appointments_result->num_rows > 0): ?>
-    <table border="1">
-        <tr>
-            <th>Service</th>
-            <th>Client</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-        <?php while ($row = $appointments_result->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo $row['service_name']; ?></td>
-            <td><?php echo $row['client_first_name'] . ' ' . $row['client_last_name']; ?></td>
-            <td><?php echo $row['appointment_date']; ?></td>
-            <td><?php echo $row['appointment_time']; ?></td>
-            <td><?php echo ucfirst($row['appointment_status']); ?></td>
-
-            <td>
-                <!-- Show Accept button for requested appointments -->
-                <?php if ($row['appointment_status'] == 'requested'): ?>
-                <form method="POST" action="../app_update_status.php" style="display:inline;">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <input type="hidden" name="new_status" value="scheduled">
-                    <input type="submit" name="accept_appointment" value="Accept">
-                </form>
-                <?php endif; ?>
-
-                <!-- Cancel Appointment Button (for scheduled appointments) -->
-                <?php if ($row['appointment_status'] == 'scheduled'): ?>
-                <form method="POST" action="../app_update_status.php" style="display:inline;">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <input type="hidden" name="new_status" value="cancelled">
-                    <input type="submit" name="cancel_appointment" value="Cancel"
-                        onclick="return confirmCancel(<?php echo $row['appointment_id']; ?>, <?php echo isset($row['is_inhouse']) ? (int)$row['is_inhouse'] : 0; ?>);">
-                </form>
-
-                <!-- Start Appointment Button (scheduled → in progress) -->
-                <form method="POST" action="../app_update_status.php" style="display:inline;">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <input type="hidden" name="new_status" value="in progress">
-                    <input type="submit" value="Start Appointment">
-                </form>
-                <?php endif; ?>
-
-                <!-- Mark as Tech Approved (in progress → tech approved) -->
-                <?php if ($row['appointment_status'] == 'in progress'): ?>
-                <form method="POST" action="../app_update_status.php" style="display:inline;">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <input type="hidden" name="new_status" value="tech approved">
-                    <input type="submit" value="Complete">
-                </form>
-                <?php endif; ?>
-
-                <!-- Final Completion Button (only visible after client approves) -->
-                <?php if ($row['appointment_status'] == 'client approved'): ?>
-                <form method="POST" action="../app_update_status.php" style="display:inline;">
-                    <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
-                    <input type="hidden" name="new_status" value="completed">
-                    <input type="submit" value="Complete Appointment">
-                </form>
-                <?php endif; ?>
-            </td>
-        </tr>
-
-        <?php endwhile; ?>
-    </table>
-    <?php else: ?>
-    <p>No appointments found.</p>
-    <?php endif; ?>
-
-    <!-- Add JavaScript to handle confirmation and future admin approval logic -->
-    <script>
-    function confirmCancel(appointmentId, isInhouse) {
-        let message = "Are you sure you want to cancel this appointment?";
-
-        // If the technician is in-house, notify about admin approval
-        if (isInhouse == 1) {
-            message += "\nThis cancellation will require admin approval.";
-        }
-
-        return confirm(message); // Shows the confirmation dialog
-    }
-    </script>
-
+        <!-- Schedule Section -->
+        <section class="form-group">
+            <h2>Schedule</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Schedule ID</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Fetch and display technician schedule
+                    // Example query: SELECT * FROM Schedule WHERE technician_id = $technician_id
+                    ?>
+                    <tr>
+                        <td><?php /* echo $row['schedule_id']; */ ?></td>
+                        <td><?php /* echo $row['date']; */ ?></td>
+                        <td><?php /* echo $row['start_time']; */ ?></td>
+                        <td><?php /* echo $row['end_time']; */ ?></td>
+                        <td><?php /* echo $row['status']; */ ?></td>
+                    </tr>
+                    <?php // endwhile; ?>
+                </tbody>
+            </table>
+        </section>
+    </div>
 </body>
+</html>
+
 
 </html>

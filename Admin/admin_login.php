@@ -45,28 +45,6 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 
-<!-- <head>
-    <title>Admin Login</title>
-    <link rel="stylesheet" href="admin_styles.css">
-</head>
-
-<body>
-    <div class="form-container">
-        <h2>Login as Admin</h2>
-        <form method="POST" action="">
-            <label for="email">Email:</label>
-            <input type="email" name="email" required><br>
-
-            <label for="password">Password:</label>
-            <input type="password" name="password" required><br>
-
-            <input type="submit" value="Login">
-        </form>
-
-        <p>Are you a<a href="../Technician/tech_login.php">Technician</a>?</p>
-    </div>
-</body> -->
-
 <head>
     <title>Admin Login</title>
     <link rel="stylesheet" href="admin_styles.css"> <!-- Link to central CSS -->

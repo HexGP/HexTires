@@ -57,7 +57,7 @@ $conn->close();
 
 <body class="login-page">
     <div class="form-container">
-        <h2>Register</h2>
+        <h2>Client Registration</h2>
         <p>
             Join our community today! Create an account to unlock exclusive features and personalized experiences.
         </p>
@@ -78,10 +78,7 @@ $conn->close();
             <input type="submit" value="Register">
             <input type="button" value="Login" onclick="window.location.href='client_login.php'">
         </form>
-
-        <!-- <p>Already have an account? <a href="client_login.php">Login here</a></p> -->
     </div>
-
 </body>
 
 </html>
