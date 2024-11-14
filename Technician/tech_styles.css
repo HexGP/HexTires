@@ -1,184 +1,315 @@
-/* General Styling */
+/* =================== General Styles =================== */
+body, body.appointment, body.login-page {
+    font-family: 'Lexend', sans-serif;
+    color: #d1d1d1;
+    margin: 0;
+    padding: 0;
+}
 body {
+    background-color: #2B2B2B;
+}
+body.appointment {
+    background-color: #1C1C1C;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body.login-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #121212;
-    font-family: 'Lexend', sans-serif;
+    min-height: 100vh;
 }
-
 
 h1, h2 {
-    color: #1abc9c;
+    color: #CAFF33;
     margin-bottom: 10px;
 }
-
 h1 {
     font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
 }
-
 h2 {
     font-size: 1.8rem;
+    margin-bottom: 15px;
 }
 
-/* Profile Information and Filters */
-p {
-    margin: 5px 0;
-    font-size: 1rem;
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-/* Form Styles */
-form {
-    margin: 20px 0;
-}
-
-input[type="email"], input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0 15px;
-    box-sizing: border-box;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    background-color: #34495e;
-    color: #ecf0f1;
-}
-
-input[type="submit"] {
-    background-color: #1abc9c;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #16a085;
-}
-
-/* Links and Filters */
-a {
-    color: #1abc9c;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #16a085;
-}
-
-/* Table Styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background-color: #34495e;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-    border: 1px solid #2c3e50;
-    color: #ecf0f1;
-}
-
-th {
-    background-color: #1abc9c;
-    color: white;
-    font-size: 1.1rem;
-}
-
-tr:nth-child(even) {
-    background-color: #3b4a59;
-}
-
-tr:hover {
-    background-color: #3f5868;
-}
-
-/* Actions within the Table */
-form[style="display:inline;"] input[type="submit"] {
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    margin-right: 5px;
-    background-color: #1abc9c;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form[style="display:inline;"] input[type="submit"]:hover {
-    background-color: #16a085;
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    table, th, td {
-        font-size: 0.9rem;
-    }
-
-    input[type="email"], input[type="text"] {
-        font-size: 0.9rem;
-    }
-}
-
-/* Login and Register Styles */
-/* Form Container Styling */
-.form-container {
-    background-color: #1C1C1C;
-    border-radius: 20px;
-    padding: 30px;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Title Styling */
-h1 {
-    color: #CAFF33;
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-/* Welcome Text */
+/* =================== Element Styles =================== */
 p {
     color: #d3d3d3;
     font-weight: 300;
     margin-bottom: 20px;
 }
+.back-button, .service-confirm, input[type="submit"], input[type="button"] {
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.back-button {
+    background-color: #CAFF33;
+    color: #121212;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+}
+.back-button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #b8e328;
+}
+.appointment-container {
+    display: flex;
+    gap: 20px;
+    max-width: max-content;
+    margin: auto;
+    padding: 20px;
+    background-color: #1C1C1C;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.service-form {
+    display: grid;
+    grid-template-areas: 
+        "car-type service-select"
+        "calendar time-slots"
+        "contact confirm";
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    padding: 15px;
+}
 
-/* Input Field Styling */
-input[type="email"],
-input[type="password"],
-input[type="text"] {
+/* Radio List Wrapper */
+.radio-list {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+}
+.radio-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+/* Hide the default radio button icon */
+.radio-list input[type="radio"],
+.radio-wrapper input[type="radio"] {
+    display: none;
+}
+
+.radio-option, .time-slot {
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.radio-option {
+    background-color: #2B2B2B;
+}
+.radio-option:hover {
+    background-color: #3B3B3B;
+}
+.radio-option.selected {
+    background-color: #CAFF33;
+    color: #121212;
+    font-weight: bold;
+}
+.service-details {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #444;
+    border-radius: 8px;
+    color: #CAFF33;
+}
+.form-group {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+.form-group:hover {
+    box-shadow: 0 0 15px rgba(201, 255, 51, 0.955);
+}
+.service-confirm {
+    width: 100%;
+    padding: 15px;
+    background-color: #BADA55;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.service-confirm:hover {
+    background-color: #A9D432;
+}
+.radio-option input[type="radio"], .service-select select:focus {
+    outline: none;
+}
+.radio-option input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #CAFF33;
+}
+.calendar, .time-slots {
+    background-color: #555;
+    padding: 15px;
+    border-radius: 8px;
+}
+#time-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.time-slot {
+    background-color: #000;
+    color: #ecf0f1;
+    width: 80px;
+}
+.time-slot:hover {
+    background-color: #BADA55;
+}
+.time-slot.selected {
+    background-color: #CAFF33;
+    color: #121212;
+    font-weight: bold;
+}
+#inline-calendar .flatpickr-day {
+    background-color: #1C1C1C;
+    color: #1C1C1C;
+    border-radius: 5px;
+}
+#inline-calendar .flatpickr-day:hover {
+    background-color: #b8e328;
+}
+#inline-calendar .flatpickr-day.selected, #inline-calendar .flatpickr-day.startRange, #inline-calendar .flatpickr-day.endRange {
+    background-color: #CAFF33 !important;
+    color: #121212 !important;
+}
+#inline-calendar .flatpickr-day.today {
+    border: 1px solid #CAFF33;
+    color: #CAFF33;
+}
+.contact label {
+    color: #CAFF33;
+    margin-top: 10px;
+}
+.column-form {
+    display: flex;
+    gap: 15px;
+}
+.column-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ecf0f1;
+}
+.column-form input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
     width: 100%;
     padding: 15px;
     margin-bottom: 10px;
-    background-color: #3b4a59;
+    background-color: #4b4b4b;
     border: none;
     border-radius: 30px;
     font-size: 1rem;
     color: #ecf0f1;
     text-align: center;
+}
+input[type="submit"], input[type="button"] {
+    width: 50%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    background-color: #CAFF33;
+    color: #121212;
+}
+
+/* Table Styling */
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: left;
+    background-color: #2B2B2B;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    padding: 12px;
+    border-bottom: 1px solid #555;
+    color: #d1d1d1;
+}
+
+.dashboard-table th {
+    background-color: #1C1C1C;
+    color: #CAFF33;
+}
+
+.dashboard-table tr:hover {
+    background-color: #3B3B3B;
+}
+
+/* Button Styling */
+.service-confirm {
+    padding: 8px 15px;
+    background-color: #BADA55;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    color: #121212;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.service-confirm:hover {
+    background-color: #A9D432;
+}
+
+/* =================== Login and Register Styles =================== */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #1C1C1C;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.form-container .column-form {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+/* Input Field Styling */
+.column-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ecf0f1;
+}
+
+/* Input and Select Styling */
+.column-form input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #4b4b4b;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    color: #ecf0f1;
+    text-align: center;
+    box-sizing: border-box; /* Ensures padding doesn't increase width */
 }
 
 /* Button Styling */
@@ -202,15 +333,38 @@ input[type="button"]:hover {
     background-color: #b8e328;
 }
 
-/* Forgot Password Link */
-.forgot-password {
-    color: #CAFF33;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px 0 20px;
-    font-size: 0.9rem;
+/* Go Back Button Styling */
+.back-button-container {
+    display: flex;
+    justify-content: flex-start;
 }
 
-.forgot-password:hover {
-    text-decoration: underline;
+.back-button {
+    background-color: #CAFF33;
+    color: #121212;
+    border: none;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #b8e328;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    table, th, td {
+        font-size: 0.9rem;
+    }
+
+    input[type="email"], input[type="text"] {
+        font-size: 0.9rem;
+    }
 }

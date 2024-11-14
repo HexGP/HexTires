@@ -13,6 +13,40 @@ body {
     padding: 20px;
 }
 
+/* Styling for the navbar brand container */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between the logo and text */
+    text-decoration: none; /* Remove underline */
+    color: #ffffff; /* Default text color */
+    transition: color 0.3s ease;
+}
+
+/* Styling for the logo */
+.brand-logo img {
+    width: 40px; /* Control the logo size */
+    height: 40px;
+    object-fit: contain; /* Keep the aspect ratio without stretching */
+    transition: transform 0.3s ease;
+}
+
+/* Styling for the brand text */
+.brand-text {
+    font-size: 1.8rem; /* Adjust text size */
+    font-weight: bold;
+    color: #CAFF33; /* Adjust brand color */
+}
+
+/* Hover effect for the entire brand */
+.navbar-brand:hover .brand-logo img {
+    transform: scale(1.1); /* Slightly enlarge logo on hover */
+}
+
+.navbar-brand:hover .brand-text {
+    color: #b8e328; /* Darker shade of the brand color on hover */
+}
+
 /* Navbar Styles */
 .navbar {
     background-color: #2B2B2B;
@@ -32,17 +66,20 @@ body {
     color: #ffffff;
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .navbar-brand img {
-    margin-right: 10px;
-    width: 40px; /* Adjust size if needed */
+    width: 40px;
     height: 40px;
 }
 
 .navbar-nav {
     display: flex;
     gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .navbar-nav .nav-link {
@@ -50,12 +87,94 @@ body {
     font-weight: 500;
     padding: 10px 20px;
     border-radius: 20px;
+    text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Highlight for the current tab */
+.navbar-nav .nav-link.active {
+    background-color: #CAFF33;
+    color: #2B2B2B; /* Contrast color for text */
+}
+
+/* Hover effect */
 .navbar-nav .nav-link:hover {
-    background-color: #333;
-    color: #ffffff;
+    background-color: #e2ff75; /* A slightly lighter green for hover effect */
+    color: #2B2B2B;
+}
+
+/* Login container for layout */
+.login-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Each login box styling */
+.login-box {
+    width: 250px;
+    background-color: transparent; /* Make background transparent */
+    border: 2px solid #CAFF33; /* Outline color */
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.login-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Image styling */
+.login-box img {
+    width: 100px; /* Fixed size */
+    height: 100px;
+    margin-top: 15px;
+    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Button styling */
+.login-box button {
+    background-color: #CAFF33; /* Button color */
+    color: #121212;
+    font-size: 1rem;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: -5px; /* Adjust spacing to move it up slightly without touching the border */
+    position: relative;
+    top: -20px; /* Fine-tune button position further if needed */
+}
+
+.login-box button:hover {
+    background-color: #b8e328; /* Slightly darker on hover */
+}
+
+/* Hide unnecessary text and details */
+.login-details {
+    padding: 0;
+    color: transparent; /* Hide text color */
+}
+
+.login-details h6 {
+    font-size: 1.1rem;
+    color: transparent; /* Make text transparent */
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+/* Ensure only these specific SVG images get the filter and size */
+img[src="images/client.svg"],
+img[src="images/tech.svg"],
+img[src="images/admin.svg"] {
+    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
+    width: 100px;
+    height: 100px;
 }
 
 /* Signup and Login Button Styles */
@@ -67,6 +186,7 @@ body {
     border-radius: 20px;
     font-weight: 500;
     transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
     margin-right: 10px;
 }
 
@@ -83,13 +203,13 @@ body {
     border-radius: 20px;
     border: none;
     transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
 }
 
 .btn-login:hover {
     background-color: #b4e625;
     color: #000;
 }
-
 
 /* Button Styles */
 .btn-custom,
@@ -110,18 +230,24 @@ body {
 }
 
 /* Section Titles and Highlights */
+
+
 .section-title {
-    color: #CAFF33;
-    font-size: 2.5rem;
+    text-align: center;
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    color: #CAFF33;
+    margin: 20px auto;
+}
+
+.mt-5 {
+    margin-top: 40px;
 }
 
 .highlight {
     color: #CAFF33;
     font-weight: bold;
 }
-
 
 .text-highlight {
     color: #CAFF33;
@@ -136,8 +262,6 @@ body {
     align-items: center;
     margin-top: 50px;
 }
-
-
 
 .intro-text {
     color: #ffffff;
@@ -300,5 +424,8 @@ body {
     .footer-bottom {
         flex-direction: column;
         gap: 10px;
+    }
+    .brand-text {
+        font-size: 1.4rem; /* Adjust text size on smaller screens */
     }
 }

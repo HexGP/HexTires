@@ -50,9 +50,6 @@ $conn->close();
     <title>Client Login</title>
     <link rel="stylesheet" type="text/css" href="client_styles.css">
 </head>
-
-<main>
-
     <body class="login-page">
         <div class="form-container">
             <div class="back-button-container">
@@ -74,10 +71,6 @@ $conn->close();
                 <input type="submit" value="Login">
                 <input type="button" value="Sign Up" onclick="window.location.href='client_register.php'">
             </form>
-
-            <p>Are you a<a href="../Technician/tech_login.php">Technician</a>?</p>
         </div>
     </body>
-
 </html>
-</main>

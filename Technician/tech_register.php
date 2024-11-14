@@ -58,27 +58,33 @@ $conn->close();
 
 <head>
     <title>Technician Registration</title>
-    <link rel="stylesheet" href="tech_styles.css"> <!-- Link to central CSS -->
+    <link rel="stylesheet" type="text/css" href="tech_styles.css">
 </head>
 
-<body>
-
+<body class="login-page">
     <div class="form-container">
         <h2>Technician Registration</h2>
+        <p>
+            Welcome Panther Tires
+        </p>
 
-        <form action="tech_register.php" method="POST">
-            First Name: <input type="text" name="first_name" required><br><br>
-            Last Name: <input type="text" name="last_name" required><br><br>
-            Email: <input type="email" name="email" required><br><br>
-            Phone Number: <input type="text" name="phone_number" required><br><br>
-            Password: <input type="password" name="password" required><br><br>
-            <!-- Clearance ID is no longer selectable by the technician, it defaults to 1 -->
+        <?php if (!empty($error_message)) : ?>
+        <div class="error-message"><?php echo $error_message; ?></div>
+        <?php endif; ?>
+
+        <form method="POST" action="">
+            <div class="column-form">
+                <input type="text" name="first_name" placeholder="First Name" required>
+                <input type="text" name="last_name" placeholder="Last Name" required>
+            </div>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone_number" placeholder="Phone Number" required>
+            <input type="password" name="password" placeholder="Password" required>
+
             <input type="submit" value="Register">
+            <input type="button" value="Login" onclick="window.location.href='tech_login.php'">
         </form>
-
-        <p>Hey there, if you've been here for a while? <a href="tech_login.php">Login here</a></p>
     </div>
-
 </body>
 
 </html>

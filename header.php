@@ -10,18 +10,27 @@
 </head>
 
 <body>
+    <?php
+    // Get the current script name
+    $current_page = basename($_SERVER['PHP_SELF']);
+    ?>
 
     <header>
         <nav class="navbar">
             <a class="navbar-brand" href="index.php">
-                <img src="images/logo.png" alt="Logo">
-                <span>Panther Tire Service</span>
+                <div class="brand-logo">
+                    <img src="images/logo.png" alt="Panther Tire Service Logo">
+                </div>
+                <span class="brand-text">Panther Tire Service</span>
             </a>
+
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="myaccount.php">MyPanther</a></li>
+                <li><a class="nav-link <?php echo $current_page == 'index.php' ? 'active' : ''; ?>"
+                        href="index.php">Home</a></li>
+                <li><a class="nav-link <?php echo $current_page == 'services.php' ? 'active' : ''; ?>"
+                        href="services.php">Services</a></li>
+                <li><a class="nav-link <?php echo $current_page == 'about.php' ? 'active' : ''; ?>"
+                        href="about.php">About</a></li>
             </ul>
             <div class="btn-container">
                 <a href="Client/client_register.php" class="btn btn-signup">Sign Up</a>
@@ -29,3 +38,6 @@
             </div>
         </nav>
     </header>
+</body>
+
+</html>

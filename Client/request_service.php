@@ -25,13 +25,13 @@ $car_types_result = $conn->query($car_types_sql);
 
 // Fetch client information
 $client_id = $_SESSION['client_id'];
-$client_sql = "SELECT first_name, last_name, email, phone FROM Clients WHERE client_id = $client_id";
+$client_sql = "SELECT first_name, last_name, email, phone_number FROM Clients WHERE client_id = $client_id";
 $client_result = $conn->query($client_sql);
 
 if ($client_result && $client_result->num_rows > 0) {
     $client_data = $client_result->fetch_assoc();
 } else {
-    $client_data = ['first_name' => '', 'last_name' => '', 'email' => '', 'phone' => ''];
+    $client_data = ['first_name' => '', 'last_name' => '', 'email' => '', 'phone_number' => ''];
 }
 
 // When the form is submitted
@@ -96,12 +96,14 @@ $conn->close();
             <!-- Car Type Selection -->
             <div class="form-group car-type">
                 <h2>Select a Car Type</h2>
-                <?php while ($row = $car_types_result->fetch_assoc()): ?>
-                <label class="radio-option">
-                    <input type="radio" name="car_type_id" value="<?php echo $row['car_type_id']; ?>" required>
-                    <?php echo $row['car_desc']; ?>
-                </label>
-                <?php endwhile; ?>
+                <div class="radio-list">
+                    <?php while ($row = $car_types_result->fetch_assoc()): ?>
+                    <label class="radio-option">
+                        <input type="radio" name="car_type_id" value="<?php echo $row['car_type_id']; ?>" required>
+                        <?php echo $row['car_desc']; ?>
+                    </label>
+                    <?php endwhile; ?>
+                </div>
             </div>
 
             <!-- Service Selection -->
