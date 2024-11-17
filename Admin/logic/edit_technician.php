@@ -35,12 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $phone_number = $_POST['phone_number'];
     $clearance_id = $_POST['clearance_id'];
+    $salary = $_POST['salary'];
     $is_inhouse = isset($_POST['is_inhouse']) ? 1 : 0;
 
     // Update the technician's details
     $update_sql = "UPDATE Technicians 
                    SET first_name = '$first_name', last_name = '$last_name', email = '$email', 
-                       phone_number = '$phone_number', clearance_id = '$clearance_id', is_inhouse = '$is_inhouse' 
+                       phone_number = '$phone_number', clearance_id = '$clearance_id', salary = '$salary',
+                       is_inhouse = '$is_inhouse' 
                    WHERE technician_id = $tech_id";
 
     if ($conn->query($update_sql) === TRUE) {
@@ -82,6 +84,9 @@ $conn->close();
 
         <label for="phone_number">Phone Number:</label>
         <input type="text" name="phone_number" value="<?php echo htmlspecialchars($tech['phone_number']); ?>" required>
+        
+        <label for="salary">Salary:</label>
+        <input type="number" name="salary" value="<?php echo htmlspecialchars($tech['salary']); ?>" required>
 
         <label for="clearance_id">Clearance:</label>
         <select name="clearance_id" required>

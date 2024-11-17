@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch available services
-$services_sql = "SELECT service_id, service_name, service_description, service_price FROM Services";
+$services_sql = "SELECT service_id, service_name, service_description, service_price, svg_icon FROM Services";
 $services_result = $conn->query($services_sql);
 
 // Fetch car types
@@ -113,14 +113,22 @@ $conn->close();
                     <?php while ($row = $services_result->fetch_assoc()): ?>
                     <label class="radio-option">
                         <input type="radio" name="service_id" value="<?php echo $row['service_id']; ?>"
+                            data-name="<?php echo htmlspecialchars($row['service_name']); ?>"
                             data-description="<?php echo htmlspecialchars($row['service_description']); ?>"
                             data-price="<?php echo htmlspecialchars($row['service_price']); ?>" required>
-                        <?php echo $row['service_name']; ?>
+
+                        <!-- SVG Icon -->
+                        <img src="data:image/svg+xml;base64,<?php echo base64_encode($row['svg_icon']); ?>"
+                            alt="<?php echo htmlspecialchars($row['service_name']); ?>" class="service-icon">
+
+                        <!-- Service Name -->
+                        <span class="service-name"><?php echo $row['service_name']; ?></span>
                     </label>
                     <?php endwhile; ?>
                 </div>
 
                 <div id="serviceDetails" class="service-details" style="display: none;">
+                    <p id="serviceName"></p>
                     <p id="serviceDescription"></p>
                     <p id="servicePrice"></p>
                 </div>
@@ -217,9 +225,12 @@ $conn->close();
                 if (radio.checked) {
                     radio.parentNode.classList.add("selected");
                 }
+                
+                const name = radio.getAttribute("data-name");
                 const description = radio.getAttribute("data-description");
                 const price = radio.getAttribute("data-price");
 
+                document.getElementById("serviceName").textContent = name;
                 document.getElementById("serviceDescription").textContent = description;
                 document.getElementById("servicePrice").textContent = `Price: $${price}`;
                 document.getElementById("serviceDetails").style.display = "block";

@@ -47,38 +47,29 @@ $conn->close();
 
 <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="admin_styles.css"> <!-- Link to central CSS -->
+    <link rel="stylesheet" type="text/css" href="../login_styles.css">
 </head>
-
-<main>
-
-    <body>
+    <body class="login-page">
         <div class="form-container">
             <div class="back-button-container">
                 <button onclick="window.location.href='../index.php'" class="back-button">&laquo; Go Back</button>
             </div>
 
             <h2>Admin Login</h2>
-
+            <p>
+            Welcome back Admin!
+            </p>
             <?php if (!empty($error_message)) : ?>
             <div class="error-message"><?php echo $error_message; ?></div>
             <?php endif; ?>
 
             <form method="POST" action="">
-                <label>Email:</label>
-                <input type="email" name="email" required>
-
-                <label>Password:</label>
-                <input type="password" name="password" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
 
                 <input type="submit" value="Login">
                 <input type="button" value="Sign Up" onclick="window.location.href='admin_register.php'">
             </form>
-
-            <p>Are you a<a href="../Technician/tech_login.php">Technician</a>?</p>
         </div>
     </body>
-</html>
-</main>
-
 </html>

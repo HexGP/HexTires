@@ -36,6 +36,262 @@ h2 {
     margin-bottom: 15px;
 }
 
+/* =================== Dashboard Styles =================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #d1d1d1;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #1c1c1c;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #CAFF33;
+    min-height: 100vh; /* Full viewport height */
+}
+
+.sidebar h2 {
+    color: #CAFF33;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Pushes content to the top */
+}
+
+.sidebar-logout {
+    margin-top: auto; /* Positions at the bottom */
+    width: 100%; /* Ensures button is centered horizontally */
+}
+
+.logout-button {
+    width: 100%; /* Full width of sidebar */
+    background-color: transparent;
+    border: 2px solid #CAFF33;
+    color: #CAFF33;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+
+.logout-button:hover {
+    background-color: #CAFF33;
+    color: #121212;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.profile-section {
+    grid-column: span 1;
+    background-color: #2B2B2B;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #CAFF33;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.edit-button {
+    background-color: transparent;
+    border: 2px solid #CAFF33;
+    color: #CAFF33;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.edit-button:hover {
+    background-color: #CAFF33;
+    color: #121212;
+}
+
+.service-icon {
+    width: 24px; /* Icon size */
+    height: 24px;
+    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #888;
+    margin: 0 auto 10px;
+}
+
+.profile-info h3, .profile-info p {
+    color: #CAFF33;
+    text-align: left;
+}
+
+.edit-button {
+    background-color: transparent;
+    border: 2px solid #CAFF33;
+    color: #CAFF33;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 15px;
+}
+
+.edit-button:hover {
+    background-color: #CAFF33;
+    color: #121212;
+}
+
+/* Service Request Section Styling */
+.service-request-section {
+    grid-column: span 1;
+    background-color: #2B2B2B;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #CAFF33;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Allows positioning of child elements */
+    padding-bottom: 60px; /* Space for the button at the bottom */
+}
+
+.button-container {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.request-service-button {
+    background-color: transparent;
+    border: 2px solid #CAFF33;
+    color: #CAFF33;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.request-service-button:hover {
+    background-color: #CAFF33;
+    color: #121212;
+}
+
+.service-icon {
+    width: 24px; /* Icon size */
+    height: 24px;
+    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
+}
+
+/* Service Grid Layout */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Service Card Styling */
+.service-card {
+    background-color: transparent;
+    border: 2px solid #CAFF33;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%); /* Adjust color if needed */
+}
+
+.service-name {
+    color: #CAFF33;
+    font-size: 1rem;
+}
+
+/* Appointments Section */
+.appointments-section {
+    grid-column: span 2;
+    background-color: #2B2B2B;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #CAFF33;
+}
+
+.appointments-section h2 {
+    color: #CAFF33;
+    margin-bottom: 15px;
+}
+
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.appointments-table th,
+.appointments-table td {
+    padding: 12px;
+    border-bottom: 1px solid #444;
+    text-align: left;
+    color: #d1d1d1;
+}
+
+.appointments-table th {
+    color: #CAFF33;
+}
+
+.action-button {
+    background-color: transparent;
+    border: 2px solid #CAFF33;
+    color: #CAFF33;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #CAFF33;
+    color: #121212;
+}
+
+
 /* =================== Element Styles =================== */
 p {
     color: #d3d3d3;
@@ -58,6 +314,8 @@ p {
 .back-button:hover, input[type="submit"]:hover, input[type="button"]:hover {
     background-color: #b8e328;
 }
+
+
 .appointment-container {
     display: flex;
     gap: 20px;
@@ -68,12 +326,13 @@ p {
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .service-form {
     display: grid;
     grid-template-areas: 
         "car-type service-select"
         "calendar time-slots"
-        "contact confirm";
+        "confirm";
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 1fr;
     gap: 10px;
@@ -86,10 +345,12 @@ p {
     grid-template-rows: repeat(5, 1fr);
     gap: 10px;
 }
+
 .radio-wrapper {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive columns */
+    gap: 15px;
+    justify-items: center;
 }
 
 /* Hide the default radio button icon */
@@ -111,11 +372,19 @@ p {
 .radio-option:hover {
     background-color: #3B3B3B;
 }
+
+/* JavaScript to handle the selected state */
 .radio-option.selected {
     background-color: #CAFF33;
     color: #121212;
     font-weight: bold;
 }
+
+/* SVG icon turns black when selected */
+.radio-option.selected .service-icon {
+    filter: brightness(0) saturate(100%); /* Black filter */
+}
+
 .service-details {
     margin-top: 15px;
     padding: 10px;
@@ -227,108 +496,196 @@ input[type="submit"], input[type="button"] {
     color: #121212;
 }
 
-/* =================== Login and Register Styles =================== */
-.form-container {
-    width: 100%;
-    max-width: 400px;
-    background-color: #1C1C1C;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.form-container .column-form {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-}
-
-/* Input Field Styling */
-.column-form label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #ecf0f1;
-}
-
-/* Input and Select Styling */
-.column-form input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="text"],
-input[type="tel"] {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 10px;
-    background-color: #4b4b4b;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    color: #ecf0f1;
-    text-align: center;
-    box-sizing: border-box; /* Ensures padding doesn't increase width */
-}
-
-/* Button Styling */
-input[type="submit"],
-input[type="button"] {
-    width: 50%;
-    padding: 10px;
-    margin-top: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background-color: #CAFF33;
-    color: #121212;
-}
-
-input[type="submit"]:hover,
-input[type="button"]:hover {
-    background-color: #b8e328;
-}
-
-/* Go Back Button Styling */
-.back-button-container {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.back-button {
-    background-color: #CAFF33;
-    color: #121212;
-    border: none;
-    font-size: 0.8rem;
-    padding: 5px 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: #b8e328;
-}
-
 /* =================== Responsive Design =================== */
-/* @media (max-width: 768px) {
-    .service-section {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-            "car-type"
-            "service-selection"
-            "calendar"
-            "time-slots"
-            "contact"
-            "confirm";
+/* For tablets (1024px and below) */
+@media (max-width: 1024px) {
+    .dashboard-container {
+        flex-direction: column;
     }
 
-    .form-group {
+    /* Top Bar Styling (Converted from Sidebar) */
+    .sidebar {
+        width: 100%;
+        height: 60px;
+        flex-direction: row;
+        padding: 0 15px;
+        border-right: none;
+        border-bottom: 2px solid #CAFF33;
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 60px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: #CAFF33;
+    }
+
+
+    .main-content {
+        margin-top: 60px;
+        padding: 15px;
+        display: block;
+    }
+
+    .sidebar h2 {
+        margin-bottom: 0;
+        margin-right: auto;
+        font-size: 1.2rem;
+        align-self: center;
+    }
+
+    .profile-section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
         padding: 15px;
     }
 
-    .service-confirm {
+    .profile-image {
+        width: 60px;
+        height: 60px;
+        margin-right: 15px;
+    }
+
+    .profile-info {
+        flex: 1;
+        text-align: left;
+        margin-right: 15px;
+    }
+
+    .button-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .edit-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        border-radius: 20px;
+    }
+
+    .sidebar-logout {
+        margin-top: 0;
+    }
+
+    .logout-button {
+        width: auto;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        border-radius: 20px;
+    }
+
+    .sidebar a {
+        margin: 0 10px;
+        font-size: 1rem;
+    }
+
+    input[type="submit"],
+    input[type="button"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        background-color: #CAFF33;
+        color: #121212;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    body {
+        padding-top: 60px;
+    }
+
+}
+
+/* For mobile devices (768px and below) */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 60px;
+        flex-direction: row;
+        padding: 0 15px;
+        border-right: none;
+        border-bottom: 2px solid #CAFF33;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: #1c1c1c;
+    }
+
+    .sidebar h2 {
+        margin-bottom: 0;
+        margin-right: auto;
+        font-size: 1.2rem;
+        align-self: center;
+    }
+
+    .sidebar-logout {
+        margin-top: 0;
+    }
+
+    .profile-section {
         padding: 10px;
     }
-} */
+
+    .profile-image {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .profile-info {
+        margin-right: 10px;
+    }
+
+    .edit-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .logout-button {
+        width: auto;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        border-radius: 20px;
+    }
+
+    .sidebar a {
+        margin: 0 10px;
+        font-size: 1rem;
+    }
+
+    input[type="submit"],
+        input[type="button"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            background-color: #CAFF33;
+            color: #121212;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+    
+
+    body {
+        padding-top: 60px;
+    }
+}

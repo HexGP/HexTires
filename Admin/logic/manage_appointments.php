@@ -52,11 +52,26 @@ if (isset($_POST['cancel_appointment'])) {
 if (isset($_POST['assign_technician'])) {
     $appointment_id = $_POST['appointment_id'];
     $technician_id = $_POST['technician_id'];
+    $appointment_date = $_POST['appointment_date'];
+    $appointment_time = $_POST['appointment_time'];
+    
+    // Define end time (1 hour duration for appointments)
+    $end_time = date("H:i:s", strtotime("+1 hour", strtotime($appointment_time)));
+    
+    // Update the appointment status and technician
     $assign_sql = "UPDATE Appointments SET technician_id = $technician_id, appointment_status = 'scheduled' WHERE appointment_id = $appointment_id";
     if ($conn->query($assign_sql) === TRUE) {
-        echo "Technician assigned successfully.";
-        header("Location: manage_appointments.php");
-        exit();
+        // Call the TechnicianScheduler stored procedure
+        $stmt = $conn->prepare("CALL TechnicianScheduler(?, ?, 'scheduled', ?, ?, ?)");
+        $stmt->bind_param("iisss", $appointment_id, $technician_id, $appointment_date, $appointment_time, $end_time);
+        if ($stmt->execute()) {
+            $stmt->close();
+            echo "Technician assigned and schedule updated successfully.";
+            header("Location: manage_appointments.php");
+            exit();
+        } else {
+            echo "Error calling TechnicianScheduler procedure: " . $stmt->error;
+        }
     } else {
         echo "Error assigning technician: " . $conn->error;
     }
@@ -114,6 +129,8 @@ $conn->close();
                         <?php else: ?>
                             <form method="POST" action="" style="display:inline;">
                                 <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
+                                <input type="hidden" name="appointment_date" value="<?php echo $row['appointment_date']; ?>">
+                                <input type="hidden" name="appointment_time" value="<?php echo $row['appointment_time']; ?>">
                                 <select name="technician_id" required>
                                     <option value="">Assign Technician</option>
                                     <?php while ($tech = $technician_result->fetch_assoc()): ?>

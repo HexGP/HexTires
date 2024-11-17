@@ -48,7 +48,7 @@ $conn->close();
 
 <head>
     <title>Client Login</title>
-    <link rel="stylesheet" type="text/css" href="client_styles.css">
+    <link rel="stylesheet" type="text/css" href="../login_styles.css">
 </head>
     <body class="login-page">
         <div class="form-container">

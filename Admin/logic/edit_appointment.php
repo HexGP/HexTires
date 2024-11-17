@@ -18,7 +18,8 @@ if ($conn->connect_error) {
 $appointment_id = $_GET['appointment_id'];
 $appointment_sql = "
     SELECT a.*, c.first_name AS client_first_name, c.last_name AS client_last_name, 
-           t.first_name AS tech_first_name, t.last_name AS tech_last_name, s.service_name
+           t.first_name AS tech_first_name, t.last_name AS tech_last_name, 
+           t.technician_id, s.service_name
     FROM Appointments a
     JOIN Clients c ON a.client_id = c.client_id
     LEFT JOIN Technicians t ON a.technician_id = t.technician_id
@@ -31,18 +32,60 @@ $appointment = $appointment_result->fetch_assoc();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $new_status = $_POST['new_status'];
 
-    // Fetch current status
+    // Fetch current status and details
     $current_status = $appointment['appointment_status'];
+    $technician_id = $appointment['technician_id'];
+    $client_id = $appointment['client_id'];
+    $appointment_date = $appointment['appointment_date'];
+    $start_time = $appointment['appointment_time'];
+    $end_time = date("H:i:s", strtotime("+1 hour", strtotime($start_time))); // Assuming 1-hour duration
 
     // Append to status history
     $status_history = $appointment['status_history'] ?? '';
-    // Assuming $status_history contains the existing status history from the database
-    $new_history_entry = $current_status . ' → ' . $new_status . ' by ' . $user_role . ' on ' . date('Y-m-d H:i:s') . "\n";
+    $new_history_entry = $current_status . ' → ' . $new_status . ' by Admin on ' . date('Y-m-d H:i:s') . "\n";
     $updated_history = $status_history . $new_history_entry;
 
     // Update the appointment status and status history
     $update_sql = "UPDATE Appointments SET appointment_status = '$new_status', status_history = '$updated_history' WHERE appointment_id = $appointment_id";
     if ($conn->query($update_sql) === TRUE) {
+        // Call TechnicianScheduler procedure for specific statuses
+        if (in_array($new_status, ['assigned', 'scheduled', 'completed'])) {
+            $stmt = $conn->prepare("CALL TechnicianScheduler(?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param(
+                "iissss",
+                $appointment_id,
+                $technician_id,
+                $new_status,
+                $appointment_date,
+                $start_time,
+                $end_time
+            );
+
+            if (!$stmt->execute()) {
+                echo "Error calling TechnicianScheduler procedure: " . $stmt->error;
+            }
+            $stmt->close();
+        }
+
+        // Call HandlePayment when the status is changed to 'completed'
+        if ($new_status === 'completed') {
+            $tip_amount = isset($_POST['tip_amount']) ? (float)$_POST['tip_amount'] : 0.00;
+
+            $stmt = $conn->prepare("CALL HandlePayment(?, ?, ?, ?)");
+            $stmt->bind_param(
+                "iiid",
+                $appointment_id,
+                $client_id,
+                $technician_id,
+                $tip_amount
+            );
+
+            if (!$stmt->execute()) {
+                echo "Error calling HandlePayment procedure: " . $stmt->error;
+            }
+            $stmt->close();
+        }
+
         echo "Appointment status updated successfully.";
         header("Location: manage_appointments.php");
         exit();
@@ -97,7 +140,6 @@ $conn->close();
 
     <h2>Status History</h2>
     <p><?php echo nl2br($appointment['status_history']); ?></p>
-
 
     <a href="manage_appointments.php">Back to Appointments</a>
 </body>

@@ -8,74 +8,75 @@ body {
     padding: 0;
 }
 
-/* Dashboard Layout */
+h1, h2 {
+    color: #CAFF33;
+    margin-bottom: 10px;
+}
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+/* =================== Element Styles =================== */
+p {
+    color: #d3d3d3;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+.back-button, .service-confirm, input[type="submit"], input[type="button"] {
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.back-button {
+    background-color: #CAFF33;
+    color: #121212;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+}
+.back-button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #b8e328;
+}
+
+/* =================== Dashboard Layout =================== */
 .dashboard-container {
     display: flex;
     height: 100vh;
 }
 
-/* =================== Sidebar Layout =================== */
 .sidebar {
-    width: 250px;
-    background-color: #333;
+    width: 200px;
+    background-color: #2B2B2B;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
 }
 
 .admin-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #1C1C1C; /* Background color to match overall style */
-    color: #CAFF33; /* Text color */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for better visual */
-}
-
-.admin-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #CAFF33; /* Match the heading with the theme */
-}
-
-
-/* Center text inside */
-.admin-info p {
-    margin: 5px 0;
-    font-size: 1rem;
     text-align: center;
-    color: #CAFF33; /* Match text with the theme */
 }
 
-.circle-frame {
+.image-frame {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    overflow: hidden;
-    /* background-color: #888; */
-    background-color: #1C1C1C;
-    border: 2px solid #CAFF33;
-    display: flex;
-    align-items: center;
-    border-radius: 50%;
-    justify-content: center;
-    overflow: hidden;;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    background-color: #888;
+    border: 3px solid #CAFF33;
+    margin-bottom: 10px;
 }
 
-/* Ensure only these specific SVG images get the filter and size */
 .profile-preview {
-    width: 80%;
-    height: 80%;
-    /* fill: #CAFF33; */
-    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
 .button-group {
@@ -127,16 +128,16 @@ body {
 /* =================== Dashboard Layout =================== */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Fixed 3 columns for equal sizing */
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     padding: 20px;
-    width: calc(100% - 200px); /* Full width minus sidebar */
+    width: calc(100% - 200px);
     box-sizing: border-box;
 }
 
 .grid-stack {
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     /* padding: 20px; */
 }
@@ -144,6 +145,13 @@ body {
 .grid-stamp {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    /* padding: 20px; */
+}
+
+.grid-snap {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     /* padding: 20px; */
 }

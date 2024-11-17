@@ -44,33 +44,36 @@ $conn->close();
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Admin Registration</title>
-    <link rel="stylesheet" href="admin_styles.css"> <!-- Link to central CSS -->
+    <link rel="stylesheet" type="text/css" href="../login_styles.css">
 </head>
-<body>
+
+<body class="login-page">
     <div class="form-container">
         <h2>Register as Admin</h2>
+        <p>
+            Welcome create your Admin account.
+        </p>
+
+        <?php if (!empty($error_message)) : ?>
+        <div class="error-message"><?php echo $error_message; ?></div>
+        <?php endif; ?>
+
         <form method="POST" action="">
-            <label for="first_name">First Name:</label>
-            <input type="text" name="first_name" required><br>
-
-            <label for="last_name">Last Name:</label>
-            <input type="text" name="last_name" required><br>
-
-            <label for="email">Email:</label>
-            <input type="email" name="email" required><br>
-
-            <label for="phone_number">Phone Number:</label>
-            <input type="text" name="phone_number" required><br>
-
-            <label for="password">Password:</label>
-            <input type="password" name="password" required><br>
+            <div class="column-form">
+                <input type="text" name="first_name" placeholder="First Name" required>
+                <input type="text" name="last_name" placeholder="Last Name" required>
+            </div>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone_number" placeholder="Phone Number" required>
+            <input type="password" name="password" placeholder="Password" required>
 
             <input type="submit" value="Register">
+            <input type="button" value="Login" onclick="window.location.href='admin_login.php'">
         </form>
-
-        <p>Administrator? <a href="admin_login.php">Login here</a></p>
     </div>
 </body>
+
 </html>
