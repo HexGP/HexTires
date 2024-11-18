@@ -72,7 +72,7 @@ $conn->close();
                 <tr>
                     <td><?php echo $row['service_id']; ?></td>
                     <td><?php echo $row['service_name']; ?></td>
-                    <td><?php echo $row['service_price']; ?></td>
+                    <td><?php echo "$" . number_format($row['service_price'], 2); ?></td>
                     <td><?php echo $row['clearance_name']; ?></td> <!-- Display clearance name instead of clearance_id -->
                     <td><?php echo $row['service_description']; ?></td> <!-- Display service description here -->
                     <td>

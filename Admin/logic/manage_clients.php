@@ -44,6 +44,23 @@ if (isset($_POST['delete_client'])) {
     }
 }
 
+function formatPhoneNumber($phoneNumber) {
+    // Remove all non-numeric characters
+    $cleaned = preg_replace('/\D/', '', $phoneNumber);
+
+    // Check if the cleaned number has 10 digits
+    if (strlen($cleaned) === 10) {
+        return sprintf('(%s) %s-%s', 
+            substr($cleaned, 0, 3), // Area code
+            substr($cleaned, 3, 3), // First 3 digits
+            substr($cleaned, 6, 4)  // Last 4 digits
+        );
+    }
+
+    // Return the original number if it's not 10 digits
+    return $phoneNumber;
+}
+
 // Close the connection
 $conn->close();
 ?>
@@ -82,7 +99,7 @@ $conn->close();
                     <td><?php echo $row['client_id']; ?></td>
                     <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
                     <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['phone_number']; ?></td>
+                    <td><?php echo formatPhoneNumber($row['phone_number']); ?></td>
                     <td>
                         <form method="POST" action="" style="display:inline;">
                             <input type="hidden" name="client_id" value="<?php echo $row['client_id']; ?>">

@@ -12,10 +12,12 @@ include 'header.php';
         <!-- Welcome Section -->
         <div class="row featurette mt-5">
             <div class="col-md-6 text-left">
-                <p class="info-text">
-                    <img src="images/Icon.png" alt="Check Icon" width="20" height="20">
-                    Easy Appointments, No Hidden Fees.
-                </p>
+            <div style="display: flex; align-items: center;">
+                        <img src="images/Icon.png" alt="Check Icon" width="20" height="20"
+                            style="margin-right: 10px; vertical-align: middle;">
+                        <h2 class="featurette-heading">Easy Appointments, No<span class="text-highlight">
+                        Hidden Fees.</span></h2>
+                    </div>
                 <h3>Welcome to Panther Tire Service</h3>
                 <h3>Your <span class="highlight">Premier One-Stop</span> Tire Solution</h3>
                 <p class="intro-text">

@@ -90,8 +90,8 @@ body {
     width: 100%;
 }
 
-.settings-form button,
-.logout-form button {
+.settings-button,
+.logout-button {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
@@ -103,22 +103,22 @@ body {
     text-align: center;
 }
 
-.settings-form button {
+.settings-button {
     background-color: #CAFF33;
     color: #121212;
 }
 
-.settings-form button:hover {
+.settings-button:hover {
     background-color: #b8e328;
     transform: scale(1.05);
 }
 
-.logout-form button {
+.logout-button {
     background-color: #FF4D4D;
     color: #ffffff;
 }
 
-.logout-form button:hover {
+.logout-button:hover {
     background-color: #e43a3a;
     transform: scale(1.05);
 }

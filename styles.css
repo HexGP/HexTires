@@ -1,4 +1,4 @@
-/* General Body and Main Styles */
+/* =================== General Body and Main Styles =================== */
 body {
     font-family: 'Lexend', sans-serif;
     background-color: #1C1C1C;
@@ -13,7 +13,7 @@ body {
     padding: 20px;
 }
 
-/* Styling for the navbar brand container */
+/* =================== Navbar Styles Styles =================== */
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -31,7 +31,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Styling for the brand text */
 .brand-text {
     font-size: 1.8rem; /* Adjust text size */
     font-weight: bold;
@@ -103,7 +102,7 @@ body {
     color: #2B2B2B;
 }
 
-/* Login container for layout */
+/* =================== Login container Styles =================== */
 .login-container {
     display: flex;
     justify-content: center;
@@ -168,6 +167,8 @@ body {
     font-weight: bold;
 }
 
+/* =================== Index Styles  =================== */
+
 /* Ensure only these specific SVG images get the filter and size */
 img[src="images/client.svg"],
 img[src="images/tech.svg"],
@@ -177,7 +178,7 @@ img[src="images/admin.svg"] {
     height: 100px;
 }
 
-/* Signup and Login Button Styles */
+
 .btn-signup {
     color: #ffffff;
     background-color: transparent;
@@ -229,9 +230,104 @@ img[src="images/admin.svg"] {
     border: 1px solid #CAFF33;
 }
 
-/* Section Titles and Highlights */
+/* =================== Services Styles  =================== */
+/* box-shadow: 0 0 15px 5px #CAFF33; */
+.service-card:hover {
+    background-color: #444;
+    box-shadow: 0 0 15px 5px #CAFF33;
+}
+
+.service-icon {
+    margin-right: 10px;
+    transition: transform 0.4s ease-in-out, margin-left 0.4s ease-in-out;
+}
+
+.service-icon img {
+    width: 50px;
+    height: auto;
+    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.services-container h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #CAFF33;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.service-card {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    justify-content: flex-start; /* Start items at the top */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    transition: all 0.4s ease-in-out; /* Smooth transition for hover effects */
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    height: auto; /* Adjust height dynamically */
+    min-height: 100px; /* Ensure a minimum size */
+}
+
+.service-icon img {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.4s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.service-info {
+    margin: 10px 0;
+}
+
+.service-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.service-desc {
+    opacity: 0; /* Hidden by default */
+    max-height: 0; /* Collapsed initially */
+    overflow: hidden; /* Prevent content from spilling */
+    transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out; /* Smooth reveal */
+    margin-top: 10px; /* Space between name and description */
+}
+
+.service-price {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.service-description {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #ddd;
+}
+
+/* Hover effect to reveal price and description */
+.service-card:hover .service-desc {
+    opacity: 1; /* Make visible */
+    max-height: 150px; /* Expand to fit content */
+}
 
 
+/* =================== About Styles  =================== */
 .section-title {
     text-align: center;
     font-size: 2rem;
@@ -351,10 +447,10 @@ img[src="images/admin.svg"] {
 }
 
 .img-fluid.rounded-circle:hover {
-    box-shadow: 0 0 15px 5px #CAFF33; /* Adjust glow color and size */
+    box-shadow: 0 0 15px 5px #CAFF33;
 }
 
-/* Footer Styles */
+/* =================== Footer Styles =================== */
 .footer {
     background-color: #121212;
     color: #d1d1d1;

@@ -36,7 +36,6 @@ h2 {
     margin-bottom: 15px;
 }
 
-/* =================== Dashboard Styles =================== */
 * {
     margin: 0;
     padding: 0;
@@ -49,15 +48,61 @@ body {
     color: #d1d1d1;
 }
 
-.dashboard-container {
+/* =================== Element Styles =================== */
+p {
+    color: #d3d3d3;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+.back-button, .service-confirm, input[type="submit"], input[type="button"] {
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.back-button {
+    background-color: #CAFF33;
+    color: #121212;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+}
+.back-button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #b8e328;
+}
+
+/* =================== Sidebar Layout =================== */
+.circle-frame {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* background-color: #888; */
+    background-color: #1C1C1C;
+    border: 2px solid #CAFF33;
     display: flex;
-    min-height: 100vh;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    overflow: hidden;;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Ensure only these specific SVG images get the filter and size */
+.profile-preview {
+    width: 80%;
+    height: 80%;
+    /* fill: #CAFF33; */
+    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
+    object-fit: cover;
 }
 
 /* Sidebar Styling */
 .sidebar {
     width: 250px;
-    background-color: #1c1c1c;
+    /* background-color: #2B2B2B; */
+    /* background-color: #1c1c1c; */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -94,8 +139,13 @@ body {
     color: #121212;
 }
 
-/* Main Content Styling */
-.main-content {
+/* =================== Dashboard Styles =================== */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard-grid {
     flex: 1;
     padding: 20px;
     display: grid;
@@ -103,6 +153,7 @@ body {
     gap: 20px;
 }
 
+/* =================== Profile Section Styles =================== */
 .profile-section {
     grid-column: span 1;
     background-color: #2B2B2B;
@@ -167,7 +218,7 @@ body {
     color: #121212;
 }
 
-/* Service Request Section Styling */
+/* =================== Service Request Section Styles =================== */
 .service-request-section {
     grid-column: span 1;
     background-color: #2B2B2B;
@@ -177,8 +228,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* Allows positioning of child elements */
-    padding-bottom: 60px; /* Space for the button at the bottom */
+    position: relative;
+    padding-bottom: 60px;
 }
 
 .button-container {
@@ -233,19 +284,7 @@ body {
     transform: translateY(-5px);
 }
 
-.service-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%); /* Adjust color if needed */
-}
-
-.service-name {
-    color: #CAFF33;
-    font-size: 1rem;
-}
-
-/* Appointments Section */
+/* =================== Appointments Section Styles =================== */
 .appointments-section {
     grid-column: span 2;
     background-color: #2B2B2B;
@@ -291,38 +330,58 @@ body {
     color: #121212;
 }
 
-
-/* =================== Element Styles =================== */
-p {
-    color: #d3d3d3;
-    font-weight: 300;
-    margin-bottom: 20px;
+.table-container {
+    /* max-height: 300px; */
+    max-height: calc(50vh - 200px); /* Adjust height dynamically */
+    overflow-y: auto;
+    background-color: #1A1A1A; /* Darker color for the background */
+    padding: 10px; /* Add some padding for spacing */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for better visuals */
+    color: #d1d1d1; /* Text color for readability */
 }
-.back-button, .service-confirm, input[type="submit"], input[type="button"] {
-    border: none;
-    border-radius: 20px;
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.totals {
+    display: flex;
+    gap: 15px;
+    font-size: 1rem;
+    color: #CAFF33;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filters button {
+    background-color: #333;
+    color: #CAFF33;
+    border: 1px solid #CAFF33;
+    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-.back-button {
+
+.filters button:hover {
     background-color: #CAFF33;
-    color: #121212;
-    font-size: 0.9rem;
-    padding: 8px 12px;
-    margin-bottom: 20px;
-}
-.back-button:hover, input[type="submit"]:hover, input[type="button"]:hover {
-    background-color: #b8e328;
+    color: #333;
 }
 
-
+/* =================== Schedule Section Styles =================== */
 .appointment-container {
     display: flex;
     gap: 20px;
     max-width: max-content;
     margin: auto;
     padding: 20px;
-    background-color: #1C1C1C;
+    background-color: #333;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -332,11 +391,43 @@ p {
     grid-template-areas: 
         "car-type service-select"
         "calendar time-slots"
-        "confirm";
+        "confirm confirm";
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 1fr;
     gap: 10px;
     padding: 15px;
+}
+
+.service-details {
+    margin-top: 15px;
+    padding: 10px;
+    /* background-color: #121212; */
+    background-color: #333;
+    border-radius: 8px;
+    color: #CAFF33;
+}
+
+.form-group {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+.form-group:hover {
+    box-shadow: 0 0 15px rgba(201, 255, 51, 0.955);
+}
+.service-confirm {
+    width: 100%;
+    padding: 15px;
+    background-color: #BADA55;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.service-confirm:hover {
+    background-color: #A9D432;
 }
 
 /* Radio List Wrapper */
@@ -360,60 +451,48 @@ p {
 }
 
 .radio-option, .time-slot {
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
     padding: 10px;
     border-radius: 8px;
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-.radio-option {
     background-color: #2B2B2B;
 }
+
 .radio-option:hover {
     background-color: #3B3B3B;
 }
 
-/* JavaScript to handle the selected state */
 .radio-option.selected {
     background-color: #CAFF33;
     color: #121212;
     font-weight: bold;
 }
 
-/* SVG icon turns black when selected */
+.service-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
+}
+
+.service-name {
+    color: #CAFF33;
+    font-size: 1rem;
+}
+
+/* SVG icon and text turns black when selected */
 .radio-option.selected .service-icon {
     filter: brightness(0) saturate(100%); /* Black filter */
 }
+.radio-option.selected .service-name {
+    color: #121212;
+}
 
-.service-details {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #444;
-    border-radius: 8px;
-    color: #CAFF33;
-}
-.form-group {
-    background-color: #444;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
-}
-.form-group:hover {
-    box-shadow: 0 0 15px rgba(201, 255, 51, 0.955);
-}
-.service-confirm {
-    width: 100%;
-    padding: 15px;
-    background-color: #BADA55;
-    color: #000;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-}
-.service-confirm:hover {
-    background-color: #A9D432;
-}
 .radio-option input[type="radio"], .service-select select:focus {
     outline: none;
 }
@@ -525,7 +604,7 @@ input[type="submit"], input[type="button"] {
     }
 
 
-    .main-content {
+    .dashboard-grid {
         margin-top: 60px;
         padding: 15px;
         display: block;

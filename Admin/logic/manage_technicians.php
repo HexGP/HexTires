@@ -31,7 +31,7 @@ $tech_sql = "SELECT t.technician_id, t.first_name, t.last_name, t.email, t.phone
 $tech_result = $conn->query($tech_sql);
 
 // To format the phone number as a US number
-function formatUSPhoneNumber($phoneNumber) {
+function formatPhoneNumber($phoneNumber) {
     // Remove any non-numeric characters
     $cleaned = preg_replace('/[^0-9]/', '', $phoneNumber);
 
@@ -98,7 +98,7 @@ $conn->close();
                     <td><?php echo $row['technician_id']; ?></td>
                     <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
                     <td><?php echo $row['email']; ?></td>
-                    <td><?php echo formatUSPhoneNumber($row['phone_number']); ?></td>
+                    <td><?php echo formatPhoneNumber($row['phone_number']); ?></td>
 
                     <td><?php echo $row['is_inhouse'] ? 'Employee' : 'Contractor'; ?></td>
                     <td><?php echo $row['clearance_name']; ?></td>
