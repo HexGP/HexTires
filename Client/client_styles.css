@@ -378,7 +378,8 @@ p {
 .appointment-container {
     display: flex;
     gap: 20px;
-    max-width: max-content;
+    /* max-width: max-content; */
+    max-width: 1200px;
     margin: auto;
     padding: 20px;
     background-color: #333;
@@ -413,10 +414,30 @@ p {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     margin-top: 10px;
+    transition: max-height 0.4s ease-in-out; /* Smooth expansion */
+
 }
+
+/* Expanded state when a selection is made */
+.form-group.expanded {
+    max-height: none; /* Remove height restriction */
+    overflow: visible; /* Allow content to show */
+}
+
+.form-group .time-slots,
+.form-group .calendar {
+    background-color: #444;
+    max-height: 100px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
 .form-group:hover {
     box-shadow: 0 0 15px rgba(201, 255, 51, 0.955);
 }
+
 .service-confirm {
     width: 100%;
     padding: 15px;
