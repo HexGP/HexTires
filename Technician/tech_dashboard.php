@@ -96,10 +96,22 @@ $total_minutes = $conn->query($total_hours_sql)->fetch_assoc()['total_minutes'];
 $total_hours = ($total_minutes) ? round($total_minutes / 60, 2) : 0;
 
 // Calculate total tips and total amount
+// $total_tips_sql = "SELECT SUM(tip_amount) AS total_tips FROM Payments WHERE technician_id = $tech_id";
+// $total_amount_sql = "SELECT SUM(amount_paid) AS total_amount FROM Payments WHERE technician_id = $tech_id";
+// $total_tips = $conn->query($total_tips_sql)->fetch_assoc()['total_tips'];
+// $total_amount = $conn->query($total_amount_sql)->fetch_assoc()['total_amount'];
+
+// Calculate total tips and total amount
 $total_tips_sql = "SELECT SUM(tip_amount) AS total_tips FROM Payments WHERE technician_id = $tech_id";
 $total_amount_sql = "SELECT SUM(amount_paid) AS total_amount FROM Payments WHERE technician_id = $tech_id";
-$total_tips = $conn->query($total_tips_sql)->fetch_assoc()['total_tips'];
-$total_amount = $conn->query($total_amount_sql)->fetch_assoc()['total_amount'];
+
+// Fetch total tips
+$total_tips_result = $conn->query($total_tips_sql);
+$total_tips = $total_tips_result ? $total_tips_result->fetch_assoc()['total_tips'] : 0;
+
+// Fetch total amount
+$total_amount_result = $conn->query($total_amount_sql);
+$total_amount = $total_amount_result ? $total_amount_result->fetch_assoc()['total_amount'] : 0;
 
 // Find the most common client
 $most_common_client_sql = "
@@ -171,11 +183,11 @@ $conn->close();
             <div class="grid-item">
                 <div class="table-header">
                     <h2>Payments</h2>
-                    <div class="totals">
-                        <span>Total Tips: $<?php echo number_format($total_tips, 2); ?></span>
-                        <span>Total Amount: $<?php echo number_format($total_amount, 2); ?></span>
-                        <span>Most Common Client: <?php echo htmlspecialchars($most_common_client); ?></span>
-                    </div>
+                    <!-- <div class="totals">
+                         <span>Total Tips: $<?php echo number_format($total_tips, 2); ?></span>
+                         <span>Total Amount: $<?php echo number_format($total_amount, 2); ?></span>
+                         <span>Most Common Client: <?php echo htmlspecialchars($most_common_client); ?></span>
+                    </div> -->
                     <div class="filters">
                         <button onclick="window.location.href='?payment_filter=all';">All</button>
                         <button onclick="window.location.href='?payment_filter=completed';">Completed</button>
@@ -214,9 +226,9 @@ $conn->close();
             <div class="grid-item">
                 <div class="table-header">
                     <h2>Schedule</h2>
-                    <div class="totals">
+                    <!-- <div class="totals">
                         <span>Total Hours Assigned: <?php echo $total_hours; ?> hrs</span>
-                    </div>
+                    </div> -->
                     <div class="filters">
                         <button onclick="window.location.href='?schedule_filter=all';">All</button>
                         <button onclick="window.location.href='?schedule_filter=upcoming';">Upcoming</button>

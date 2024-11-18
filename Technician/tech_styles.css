@@ -9,15 +9,24 @@ body {
     padding: 0;
 }
 
-h1, h2 {
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1,
+h2 {
     color: #CAFF33;
     margin-bottom: 10px;
 }
+
 h1 {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 20px;
 }
+
 h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
@@ -29,12 +38,17 @@ p {
     font-weight: 300;
     margin-bottom: 20px;
 }
-.back-button, .service-confirm, input[type="submit"], input[type="button"] {
+
+.back-button,
+.service-confirm,
+input[type="submit"],
+input[type="button"] {
     border: none;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .back-button {
     background-color: #CAFF33;
     color: #121212;
@@ -42,7 +56,10 @@ p {
     padding: 8px 12px;
     margin-bottom: 20px;
 }
-.back-button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+
+.back-button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
     background-color: #b8e328;
 }
 
@@ -62,17 +79,21 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #1C1C1C; /* Background color to match overall style */
-    color: #CAFF33; /* Text color */
+    background-color: #1C1C1C;
+    /* Background color to match overall style */
+    color: #CAFF33;
+    /* Text color */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for better visual */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /* Shadow for better visual */
 }
 
 .tech-info h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
-    color: #CAFF33; /* Match the heading with the theme */
+    color: #CAFF33;
+    /* Match the heading with the theme */
 }
 
 
@@ -81,7 +102,8 @@ p {
     margin: 5px 0;
     font-size: 1rem;
     text-align: center;
-    color: #CAFF33; /* Match text with the theme */
+    color: #CAFF33;
+    /* Match text with the theme */
 }
 
 .circle-frame {
@@ -96,9 +118,11 @@ p {
     align-items: center;
     border-radius: 50%;
     justify-content: center;
-    overflow: hidden;;
+    overflow: hidden;
+    ;
     margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
 }
 
 /* Ensure only these specific SVG images get the filter and size */
@@ -116,7 +140,7 @@ p {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    margin-top: auto; 
+    margin-top: auto;
 }
 
 .button-group form {
@@ -203,15 +227,19 @@ table {
 
 .table-container {
     /* max-height: 300px; */
-    max-height: calc(50vh - 200px); /* Adjust height dynamically */
+    max-height: calc(50vh - 200px);
+    /* Adjust height dynamically */
     overflow-y: auto;
-    background-color: #1A1A1A; /* Darker color for the background */
-    padding: 10px; /* Add some padding for spacing */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for better visuals */
-    color: #d1d1d1; /* Text color for readability */
+    background-color: #1A1A1A;
+    /* Darker color for the background */
+    padding: 10px;
+    /* Add some padding for spacing */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    /* Subtle shadow for better visuals */
+    color: #d1d1d1;
+    /* Text color for readability */
 }
 
-/* carlos.lopez@panthertire.com */
 .table-header {
     display: flex;
     justify-content: space-between;
@@ -270,4 +298,126 @@ td {
 
 th {
     background-color: #444;
+}
+
+/* =================== Responsive Layout =================== */
+
+@media (max-width: 2400px) {
+
+    h1 {
+        font-size: 1.8rem;
+        /* Reduce overall size */
+        text-align: center;
+        margin-bottom: 15px;
+        /* Tighten spacing */
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        /* Smaller subheadings */
+        margin-bottom: 10px;
+        /* Reduce gap */
+    }
+
+    p {
+        color: #d3d3d3;
+        font-size: 0.9rem;
+        /* Smaller font */
+        font-weight: 300;
+        margin-bottom: 10px;
+        /* Tighten spacing */
+    }
+
+    .tech-info p {
+        margin: 3px 0;
+        /* Reduce vertical gap */
+        font-size: 0.85rem;
+        /* Smaller text */
+        text-align: center;
+        color: #CAFF33;
+    }
+
+    th,
+    td {
+        padding: 6px 10px;
+        /* Reduce padding */
+        font-size: 0.85rem;
+        /* Smaller text */
+        text-align: left;
+        border: 1px solid #444;
+    }
+
+    .filters button {
+        background-color: #333;
+        color: #CAFF33;
+        border: 1px solid #CAFF33;
+        padding: 4px 8px;
+        /* Smaller padding */
+        font-size: 0.85rem;
+        /* Smaller text */
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .totals {
+        display: flex;
+        gap: 10px;
+        /* Tighten gap */
+        font-size: 0.9rem;
+        /* Smaller font */
+        color: #CAFF33;
+    }
+
+    .dashboard-container {
+        display: flex;
+        height: 100vh;
+        align-items: stretch;
+        /* Ensure both sidebar and grid stretch evenly */
+        overflow: hidden;
+        /* Prevent unwanted scrollbars */
+    }
+
+
+    .dashboard-grid {
+        flex-grow: 1;
+        /* Allow the grid to fill remaining space */
+        display: grid;
+        grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+        /* Dynamic row height */
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        /* Dynamic column width */
+        gap: 20px;
+        padding: 20px;
+        background-color: #1C1C1C;
+        max-width: calc(100vw - 250px);
+        /* Sidebar width adjustment */
+        box-sizing: border-box;
+    }
+
+
+    .sidebar {
+        width: 250px;
+        background-color: #333;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+    }
+
+    table {
+        width: 100%;
+        max-width: 100%;
+        /* Prevent table from overflowing */
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    .totals {
+        display: flex;
+        gap: 10px;
+        font-size: .9 rem;
+        color: #CAFF33;
+    }
 }

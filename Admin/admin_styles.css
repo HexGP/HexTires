@@ -43,7 +43,6 @@ body {
     color: #CAFF33; /* Match the heading with the theme */
 }
 
-
 /* Center text inside */
 .admin-info p {
     margin: 5px 0;
@@ -235,7 +234,134 @@ body {
     text-indent: -9999px;
 }
 
-/* Responsive Styles */
+/* =================== Responsive Layout =================== */
+
+@media (max-width: 2400px) {
+    /* Dashboard Grid */
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust item width */
+        gap: 10px; /* Reduce grid gaps */
+        padding: 10px; /* Compact padding */
+        width: calc(100% - 200px); /* Adjust for the sidebar */
+        margin: 0 auto; /* Center the grid content */
+    }
+
+    .grid-item {
+        width: 100%; /* Ensure grid items fit within the columns */
+        padding: 8px; /* Reduce grid item padding */
+        border-radius: 5px; /* Compact border radius */
+        font-size: 0.8rem; /* Smaller text size */
+        box-sizing: border-box; /* Ensure consistent width */
+    }
+
+    .grid-item h2 {
+        font-size: 0.9rem; /* Smaller heading size */
+        margin-bottom: 8px; /* Tighten spacing */
+        text-align: center; /* Center-align headings */
+    }
+
+    /* Tables Inside Grid Items */
+    .table-container {
+        font-size: 0.7rem; /* Reduce table text size */
+    }
+
+    .table-header span,
+    .table-row span {
+        padding: 4px; /* Compact cell padding */
+        font-size: 0.7rem; /* Smaller text inside table rows */
+    }
+
+    .table-header span {
+        font-size: 0.75rem; /* Compact header font size */
+    }
+
+    .table-row span {
+        font-size: 0.7rem; /* Compact row text */
+    }
+
+    /* Buttons Inside Grid Items */
+    .settings-button,
+    .logout-button {
+        font-size: 0.75rem; /* Smaller button font */
+        padding: 5px 10px; /* Compact button size */
+        margin: 5px 0; /* Add spacing between buttons */
+    }
+
+    /* Images Inside Grid Items */
+    .service-icon {
+        width: 16px; /* Smaller service icons */
+        height: 16px;
+    }
+
+    .profile-preview {
+        width: 40px; /* Smaller profile preview */
+        height: 40px;
+    }
+
+    .circle-frame {
+        width: 50px; /* Reduce circle frame size */
+        height: 50px;
+    }
+
+    /* Sidebar Adjustments */
+    .sidebar {
+        width: 200px; /* Adjust sidebar width */
+        padding: 10px; /* Compact padding */
+    }
+
+    .admin-info {
+        padding: 10px;
+        font-size: 0.8rem; /* Reduce sidebar text */
+        border-radius: 6px;
+    }
+
+    .admin-info h3 {
+        font-size: 1rem; /* Smaller sidebar headings */
+    }
+
+    .admin-info p {
+        font-size: 0.8rem; /* Smaller text */
+    }
+
+    /* Lists or Text Blocks Inside Grid Items */
+    .grid-item ul,
+    .grid-item p {
+        font-size: 0.75rem; /* Smaller text for lists or paragraphs */
+        line-height: 1.2; /* Compact line height */
+        margin: 5px 0; /* Reduce spacing */
+    }
+
+    /* Inputs Inside Grid Items */
+    .grid-item input,
+    .grid-item select {
+        font-size: 0.75rem; /* Reduce input font size */
+        padding: 4px 6px; /* Compact input padding */
+        margin: 5px 0; /* Reduce spacing between inputs */
+    }
+
+    /* Labels Inside Grid Items */
+    .grid-item label {
+        font-size: 0.75rem; /* Smaller labels */
+        margin: 5px 0; /* Reduce spacing for labels */
+        display: block; /* Ensure labels stack properly */
+    }
+
+    /* Links Inside Grid Items */
+    .grid-item a {
+        font-size: 0.75rem; /* Smaller link text */
+        text-decoration: none; /* Ensure clean links */
+        color: #CAFF33; /* Keep links visible */
+        margin: 5px 0; /* Reduce spacing between links */
+    }
+
+    .grid-item a:hover {
+        text-decoration: underline; /* Add hover effect for clarity */
+    }
+}
+
+
+
+
 @media (max-width: 768px) {
     .dashboard-grid {
         grid-template-areas:

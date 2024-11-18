@@ -36,7 +36,7 @@ $appointments_sql = "SELECT a.appointment_id, a.appointment_date, a.appointment_
                      JOIN Services s ON a.service_id = s.service_id
                      JOIN Clients c ON a.client_id = c.client_id
                      LEFT JOIN Technicians t ON a.technician_id = t.technician_id
-                     ORDER BY appointment_date ASC LIMIT 15";
+                     ORDER BY appointment_date ASC LIMIT 5";
 $appointments_result = $conn->query($appointments_sql);
 
 $car_types_sql = "SELECT car_type_id, car_desc FROM CarTypes ORDER BY car_type_id ASC LIMIT 5";
@@ -58,7 +58,7 @@ if (!$payments_result) {
     die("SQL Error: " . $conn->error);
 }
 
-$services_sql = "SELECT service_id, svg_icon, service_name, service_price FROM Services ORDER BY service_id ASC LIMIT 15";
+$services_sql = "SELECT service_id, svg_icon, service_name, service_price FROM Services ORDER BY service_id ASC LIMIT 5";
 $services_result = $conn->query($services_sql);
 
 $technicians_sql = "SELECT technician_id, first_name, last_name, email, phone_number FROM Technicians ORDER BY technician_id ASC LIMIT 5";
@@ -111,19 +111,19 @@ $conn->close();
     <div class="dashboard-container">
         <nav class="sidebar">
             <div class="admin-info">
-            <h3>Admin</h3>
-                    <div class="circle-frame">
-                        <img src="../images/admin.svg" alt="Profile Picture" class="profile-preview">
-                    </div>
-                    <p><?php echo $admin['first_name'] . " " . $admin['last_name']; ?></p>
-                    <p><?php echo $admin['email']; ?></p>
-                    <p><?php echo formatPhoneNumber($admin['phone_number']); ?></p>
+                <h3>Admin</h3>
+                <div class="circle-frame">
+                    <img src="../images/admin.svg" alt="Profile Picture" class="profile-preview">
+                </div>
+                <p><?php echo $admin['first_name'] . " " . $admin['last_name']; ?></p>
+                <p><?php echo $admin['email']; ?></p>
+                <p><?php echo formatPhoneNumber($admin['phone_number']); ?></p>
             </div>
             <div class="button-group">
-                <form action="logic/manage_settings.php" method="GET" class="settings-form">
+                <form action="logic/manage_settings.php" method="GET" class="settings-button">
                     <button type="submit">Settings</button>
                 </form>
-                <form action="admin_logout.php" method="POST" class="logout-form">
+                <form action="admin_logout.php" method="POST" class="logout-button">
                     <button type="submit">Logout</button>
                 </form>
             </div>
@@ -155,67 +155,30 @@ $conn->close();
             </div>
 
             <!-- Car Types Table View -->
-            <div class="grid-stack">
-                <div class="grid-stamp">
-                    <div class="grid-item car-types">
-                        <h2>Car Types</h2>
-                        <div class="table-container">
-                            <div class="table-header">
-                                <span>ID</span>
-                                <span>Description</span>
-                            </div>
-                            <?php while ($row = $car_types_result->fetch_assoc()): ?>
-                            <div class="table-row">
-                                <span><?php echo $row['car_type_id']; ?></span>
-                                <span><?php echo $row['car_desc']; ?></span>
-                            </div>
-                            <?php endwhile; ?>
-                        </div>
-                        <a href="logic/manage_car_types.php" class="overlay-link"></a>
-                    </div>
+             
 
-                    <!-- Tire Types Table View -->
-                    <div class="grid-item tire-types">
-                        <h2>Tire Types</h2>
-                        <div class="table-container">
-                            <div class="table-header">
-                                <span>ID</span>
-                                <span>Type</span>
-                            </div>
-                            <?php while ($row = $tire_types_result->fetch_assoc()): ?>
-                            <div class="table-row">
-                                <span><?php echo $row['tire_type_id']; ?></span>
-                                <span><?php echo $row['tire_type']; ?></span>
-                            </div>
-                            <?php endwhile; ?>
-                        </div>
-                        <a href="logic/manage_tire_types.php" class="overlay-link"></a>
+            <!-- Payments Table View -->
+            <div class="grid-item payments">
+                <h2>Payments</h2>
+                <div class="table-container">
+                    <div class="table-header">
+                        <span>Payment ID</span>
+                        <span>Client</span>
+                        <span>Technician</span>
+                        <span>Amount Paid</span>
+                        <span>Payment Date</span>
                     </div>
-                </div>
-
-                <!-- Payments Table View -->
-                <div class="grid-item payments">
-                    <h2>Payments</h2>
-                    <div class="table-container">
-                        <div class="table-header">
-                            <span>Payment ID</span>
-                            <span>Client</span>
-                            <span>Technician</span>
-                            <span>Amount Paid</span>
-                            <span>Payment Date</span>
-                        </div>
-                        <?php while ($row = $payments_result->fetch_assoc()): ?>
-                        <div class="table-row">
-                            <span><?php echo $row['payment_id']; ?></span>
-                            <span><?php echo $row['client_first_name'] . ' ' . $row['client_last_name']; ?></span>
-                            <span><?php echo $row['tech_first_name'] . ' ' . $row['tech_last_name']; ?></span>
-                            <span>$<?php echo number_format($row['amount_paid'], 2); ?></span>
-                            <span><?php echo date("m/d/Y", strtotime($row['payment_date'])); ?></span>
-                        </div>
-                        <?php endwhile; ?>
+                    <?php while ($row = $payments_result->fetch_assoc()): ?>
+                    <div class="table-row">
+                        <span><?php echo $row['payment_id']; ?></span>
+                        <span><?php echo $row['client_first_name'] . ' ' . $row['client_last_name']; ?></span>
+                        <span><?php echo $row['tech_first_name'] . ' ' . $row['tech_last_name']; ?></span>
+                        <span>$<?php echo number_format($row['amount_paid'], 2); ?></span>
+                        <span><?php echo date("m/d/Y", strtotime($row['payment_date'])); ?></span>
                     </div>
-                    <a href="logic/manage_payments.php" class="overlay-link"></a>
+                    <?php endwhile; ?>
                 </div>
+                <a href="logic/manage_payments.php" class="overlay-link"></a>
             </div>
 
             <!-- Services Table View -->

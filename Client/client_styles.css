@@ -706,7 +706,8 @@ input[type="submit"], input[type="button"] {
 
 }
 
-/* For mobile devices (768px and below) */
+/* =================== Responsive Layout =================== */
+
 @media (max-width: 768px) {
     .dashboard-container {
         flex-direction: column;
