@@ -54,10 +54,11 @@ body {
 .circle-frame {
     width: 80px;
     height: 80px;
+    display: none;
     border-radius: 50%;
     overflow: hidden;
     /* background-color: #888; */
-    background-color: #1C1C1C;
+    /* background-color: #1C1C1C; */
     border: 2px solid #CAFF33;
     display: flex;
     align-items: center;

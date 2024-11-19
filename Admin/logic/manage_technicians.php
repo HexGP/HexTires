@@ -109,10 +109,9 @@ $conn->close();
                             <input type="submit" name="delete_technician" value="Delete" class="delete-button"
                                 onclick="return confirm('Are you sure you want to delete this technician?');">
                         </form>
-
                         <form method="GET" action="edit_technician.php" style="display:inline;">
                             <input type="hidden" name="technician_id" value="<?php echo $row['technician_id']; ?>">
-                            <input type="submit" value="Edit Tech Details" class="button">
+                            <input type="submit" value="Edit Tech" class="button">
                         </form>
                     </td>
                 </tr>

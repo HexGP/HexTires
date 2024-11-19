@@ -127,14 +127,16 @@ $conn->close();
     <form method="POST" action="" onsubmit="return confirmStatusChange();">
         <label for="new_status">New Status:</label>
         <select name="new_status" required>
-            <option value="requested">Requested</option>
-            <option value="scheduled">Scheduled</option>
-            <option value="in progress">In Progress</option>
-            <option value="tech approved">Tech Approved</option>
-            <option value="client approved">Client Approved</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
+            <option value="requested"
+                <?php echo ($appointment['appointment_status'] === 'requested') ? 'selected' : ''; ?>>Requested</option>
+            <option value="scheduled"
+                <?php echo ($appointment['appointment_status'] === 'scheduled') ? 'selected' : ''; ?>>Scheduled</option>
+            <option value="completed"
+                <?php echo ($appointment['appointment_status'] === 'completed') ? 'selected' : ''; ?>>Completed</option>
+            <option value="cancelled"
+                <?php echo ($appointment['appointment_status'] === 'cancelled') ? 'selected' : ''; ?>>Cancelled</option>
         </select>
+
         <input type="submit" value="Update Status">
     </form>
 

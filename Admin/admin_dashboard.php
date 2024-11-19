@@ -112,9 +112,12 @@ $conn->close();
         <nav class="sidebar">
             <div class="admin-info">
                 <h3>Admin</h3>
+                <!-- <img src="../images/admin.svg" alt="Profile Picture" class="profile-preview"> -->
+
                 <div class="circle-frame">
                     <img src="../images/admin.svg" alt="Profile Picture" class="profile-preview">
                 </div>
+                
                 <p><?php echo $admin['first_name'] . " " . $admin['last_name']; ?></p>
                 <p><?php echo $admin['email']; ?></p>
                 <p><?php echo formatPhoneNumber($admin['phone_number']); ?></p>

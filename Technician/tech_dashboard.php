@@ -162,9 +162,11 @@ $conn->close();
         <nav class="sidebar">
             <div class="tech-info">
                 <h3>Technician</h3>
-                <div class="circle-frame">
+                <img src="../images/tech.svg" alt="Profile Picture" class="profile-preview">
+
+                <!-- <div class="circle-frame">
                     <img src="../images/tech.svg" alt="Profile Picture" class="profile-preview">
-                </div>
+                </div> -->
                 <p><?php echo htmlspecialchars($tech_info['first_name'] . " " . $tech_info['last_name']); ?></p>
                 <p><?php echo htmlspecialchars($tech_info['email']); ?></p>
                 <p><?php echo formatPhoneNumber(htmlspecialchars($tech_info['phone_number'])); ?></p>

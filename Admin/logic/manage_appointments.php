@@ -163,10 +163,10 @@ $conn->close();
                         </form>
 
                         <!-- Cancel Appointment -->
-                        <form method="POST" action="" style="display:inline;">
+                        <!-- <form method="POST" action="" style="display:inline;">
                             <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
                             <input type="submit" name="cancel_appointment" value="Cancel">
-                        </form>
+                        </form> -->
                     </td>
                 </tr>
             <?php endwhile; ?>
