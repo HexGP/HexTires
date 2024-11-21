@@ -13,7 +13,34 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    gap: 20px;
 }
+/* 
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; 
+} */
+
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: start;
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px;
+}
+
+
+
+
 
 h1,
 h2 {
@@ -37,30 +64,6 @@ p {
     color: #d3d3d3;
     font-weight: 300;
     margin-bottom: 20px;
-}
-
-.back-button,
-.service-confirm,
-input[type="submit"],
-input[type="button"] {
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.back-button {
-    background-color: #CAFF33;
-    color: #121212;
-    font-size: 0.9rem;
-    padding: 8px 12px;
-    margin-bottom: 20px;
-}
-
-.back-button:hover,
-input[type="submit"]:hover,
-input[type="button"]:hover {
-    background-color: #b8e328;
 }
 
 /* =================== Sidebar Layout =================== */
@@ -124,16 +127,6 @@ input[type="button"]:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     /* Subtle shadow */
 }
-
-/* Ensure only these specific SVG images get the filter and size */
-.profile-preview {
-    width: 80%;
-    height: 80%;
-    /* fill: #CAFF33; */
-    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
-    object-fit: cover;
-}
-
 
 .button-group {
     display: flex;
@@ -300,6 +293,86 @@ th {
     background-color: #444;
 }
 
+/* =================== Form Layout =================== */
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+    color: #bdc3c7;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #CAFF33;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #333;
+    color: #ecf0f1;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="submit"] {
+    background-color: #1C1C1C;
+    color: #CAFF33;
+    border: 3px solid #CAFF33;
+    padding: 10px 15px;
+    border-radius: 4px;
+    /* border-radius: 20px; */
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+
+}
+
+input[type="submit"]:hover {
+    background-color: #b8e328;
+    color: #1C1C1C;
+
+}
+
+/* Ensure only these specific SVG images get the filter and size */
+.profile-preview {
+    width: 80%;
+    height: 80%;
+    /* fill: #CAFF33; */
+    filter: invert(89%) sepia(59%) saturate(656%) hue-rotate(24deg) brightness(118%) contrast(101%);
+    object-fit: cover;
+}
+
+/* Left Section - Table */
+.table-section {
+    width: 60%;
+    background-color: #2B2B2B;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Right Section - Form */
+.form-section {
+    width: 35%;
+    background-color: #2B2B2B;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
 /* =================== Responsive Layout =================== */
 
 @media (max-width: 2400px) {
@@ -328,6 +401,14 @@ th {
         /* Tighten spacing */
     }
 
+    .profile-container {
+        display: flex;
+        flex-direction: column; /* Arrange items in a column */
+        justify-content: space-between;
+        align-items: start;
+        gap: 20px;
+    }
+    
     .tech-info p {
         margin: 3px 0;
         /* Reduce vertical gap */
@@ -419,5 +500,110 @@ th {
         gap: 10px;
         font-size: .9 rem;
         color: #CAFF33;
+    }
+}
+
+@media (max-width: 1440px) {
+    .container {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .table-section {
+        width: 55%;
+        padding: 10px;
+        box-sizing: border-box;
+        overflow-x: auto;
+    }
+
+    .form-section {
+        width: 40%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    table {
+        table-layout: auto; /* Enable dynamic column widths */
+        width: 100%;
+        font-size: 0.85rem;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        font-size: 0.75rem;
+        text-align: left;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    th {
+        font-size: 0.8rem;
+        white-space: nowrap; /* Prevent header wrapping */
+    }
+
+    /* Dynamic Column Widths */
+    th:nth-child(1),
+    td:nth-child(1) {
+        width: 8%; /* Adjust width for ID column */
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+        width: 15%; /* Adjust Name column width */
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+        width: 20%; /* Adjust Email column */
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+        width: 15%; /* Adjust Phone Number column */
+    }
+
+    th:nth-child(5),
+    td:nth-child(5) {
+        width: 12%; /* Adjust Employee/Contractor column */
+    }
+
+    th:nth-child(6),
+    td:nth-child(6) {
+        width: 12%; /* Adjust Clearance column */
+    }
+
+    th:nth-child(7),
+    td:nth-child(7) {
+        width: 10%; /* Adjust Salary column */
+    }
+
+    th:nth-child(8),
+    td:nth-child(8) {
+        width: auto; /* Allow Actions column to grow dynamically */
+    }
+
+    .delete-button,
+    .button {
+        font-size: 0.7rem;
+        padding: 4px 5px; /* Compact button size */
+        margin: 2px;
+        box-sizing: border-box;
+    }
+
+    tr {
+        height: auto;
+    }
+
+    /* Buttons in Actions Column */
+    td form .button, 
+    td form .delete-button {
+        display: inline-block;
+        width: auto;
+    }
+
+    input[type="submit"] {
+        font-size: 0.75rem;
+        padding: 4px 5px; /* Reduce padding for buttons */
     }
 }

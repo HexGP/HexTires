@@ -76,44 +76,57 @@ $conn->close();
 <body>
     <h1>Edit Profile</h1>
 
-    <!-- Back to Dashboard page -->
-    <form method="GET" action="tech_dashboard.php" style="display:inline;">
-        <input type="submit" value="Back to Dashboard">
-    </form>
 
-    <!-- Profile Update Form -->
-    <form action="tech_update_profile.php" method="POST">
-        <label for="email">Email:</label>
-        <input type="email" name="email" value="<?php echo htmlspecialchars($tech_info['email']); ?>" required><br>
 
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" name="phone_number" value="<?php echo htmlspecialchars($tech_info['phone_number']); ?>" required><br>
+    <div class="container">
+        <!-- Back to Dashboard page -->
+        <form method="GET" action="tech_dashboard.php" style="display:inline;">
+            <input type="submit" value="Back to Dashboard">
+        </form>
+        <div class="profile-container">
+            <div class="form-section">
+                <h2>Profile Update</h2>
+                <!-- Profile Update Form -->
+                <form action="tech_update_profile.php" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" value="<?php echo htmlspecialchars($tech_info['email']); ?>"
+                        required><br>
 
-        <input type="submit" name="update_profile" value="Update Profile">
-    </form>
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="text" name="phone_number"
+                        value="<?php echo htmlspecialchars($tech_info['phone_number']); ?>" required><br>
 
-    <h2>Upcoming Schedule</h2>
+                    <input type="submit" name="update_profile" value="Update">
+                </form>
+            </div>
 
-    <?php if ($schedule_result->num_rows > 0): ?>
-        <table border="1">
-            <tr>
-                <th>Date</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-                <th>Status</th>
-            </tr>
-            <?php while ($row = $schedule_result->fetch_assoc()): ?>
-                <tr>
-                    <td><?php echo $row['schedule_date']; ?></td>
-                    <td><?php echo $row['start_time']; ?></td>
-                    <td><?php echo $row['end_time']; ?></td>
-                    <td><?php echo ucfirst($row['status']); ?></td>
-                </tr>
-            <?php endwhile; ?>
-        </table>
-    <?php else: ?>
-        <p>No schedule available.</p>
-    <?php endif; ?>
+            <div class="table-section">
+                <h2>Full Schedule</h2>
+
+                <?php if ($schedule_result->num_rows > 0): ?>
+                <table border="1">
+                    <tr>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Status</th>
+                    </tr>
+                    <?php while ($row = $schedule_result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo $row['schedule_date']; ?></td>
+                        <td><?php echo $row['start_time']; ?></td>
+                        <td><?php echo $row['end_time']; ?></td>
+                        <td><?php echo ucfirst($row['status']); ?></td>
+                    </tr>
+                    <?php endwhile; ?>
+                </table>
+                <?php else: ?>
+                <p>No schedule available.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+
+    </div>
 
 </body>
 

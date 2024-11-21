@@ -20,20 +20,43 @@ $sort_order = $_GET['order'] ?? 'asc';
 $next_sort_order = ($sort_order === 'asc') ? 'desc' : 'asc';
 
 // Fetch weekly schedule
-$week_start = date('Y-m-d', strtotime('monday this week'));
-$week_end = date('Y-m-d', strtotime('sunday this week'));
+// $week_start = date('Y-m-d', strtotime('monday this week'));
+// $week_end = date('Y-m-d', strtotime('sunday this week'));
 
+// $schedule_sql = "
+//     SELECT s.schedule_id, s.technician_id, t.first_name AS tech_first_name, t.last_name AS tech_last_name,
+//            a.appointment_id, a.appointment_date, a.appointment_time AS start_time, 
+//            ADDTIME(a.appointment_time, '01:00:00') AS end_time
+//     FROM Schedule s
+//     JOIN Technicians t ON s.technician_id = t.technician_id
+//     JOIN Appointments a ON s.appointment_id = a.appointment_id
+//     WHERE a.appointment_date BETWEEN '$week_start' AND '$week_end'
+//     ORDER BY $sort_column $sort_order";
+
+// $schedule_result = $conn->query($schedule_sql);
+
+
+// Fetch the entire schedule
 $schedule_sql = "
     SELECT s.schedule_id, s.technician_id, t.first_name AS tech_first_name, t.last_name AS tech_last_name,
            a.appointment_id, a.appointment_date, a.appointment_time AS start_time, 
            ADDTIME(a.appointment_time, '01:00:00') AS end_time
     FROM Schedule s
-    JOIN Technicians t ON s.technician_id = t.technician_id
-    JOIN Appointments a ON s.appointment_id = a.appointment_id
-    WHERE a.appointment_date BETWEEN '$week_start' AND '$week_end'
+    LEFT JOIN Technicians t ON s.technician_id = t.technician_id
+    LEFT JOIN Appointments a ON s.appointment_id = a.appointment_id
     ORDER BY $sort_column $sort_order";
 
 $schedule_result = $conn->query($schedule_sql);
+
+// Error handling
+if ($schedule_result === false) {
+    die("Query Error: " . $conn->error);
+}
+if ($schedule_result->num_rows === 0) {
+    echo "<script>alert('No schedules found.');</script>";
+}
+
+
 
 // Handle Add to Log button
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_log'])) {
@@ -81,6 +104,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_schedule'])) {
     exit();
 }
 
+function formatPhoneNumber($phoneNumber) {
+    // Remove all non-numeric characters
+    $cleaned = preg_replace('/\D/', '', $phoneNumber);
+
+    // Check if the cleaned number has 10 digits
+    if (strlen($cleaned) === 10) {
+        return sprintf('(%s) %s-%s', 
+            substr($cleaned, 0, 3), // Area code
+            substr($cleaned, 3, 3), // First 3 digits
+            substr($cleaned, 6, 4)  // Last 4 digits
+        );
+    }
+
+    // Return the original number if it's not 10 digits
+    return $phoneNumber;
+}
 $conn->close();
 ?>
 
@@ -96,7 +135,7 @@ $conn->close();
 </head>
 
 <body>
-    <h1>Manage Weekly Schedule</h1>
+    <h1>Manage Schedule</h1>
 
     <!-- Back button to the admin dashboard -->
     <form method="GET" action="../admin_dashboard.php" style="display:inline;">
@@ -123,9 +162,9 @@ $conn->close();
                     <tr id="row-<?php echo $row['schedule_id']; ?>">
                         <td><?php echo $row['tech_first_name'] . ' ' . $row['tech_last_name']; ?></td>
                         <td><?php echo $row['appointment_id']; ?></td>
-                        <td><?php echo $row['appointment_date']; ?></td>
-                        <td><?php echo $row['start_time']; ?></td>
-                        <td><?php echo $row['end_time']; ?></td>
+                        <td><?php echo date("m/d/Y", strtotime($row['appointment_date'])); ?></td>
+                        <td><?php echo date("h:i A", strtotime($row['start_time'])); ?></td>
+                        <td><?php echo date("h:i A", strtotime($row['end_time'])); ?></td>
                         <td>
                             <!-- Add to Log Button -->
                             <input type="hidden" name="technician_id" value="<?php echo $row['technician_id']; ?>">
@@ -150,6 +189,7 @@ $conn->close();
         <div class="form-section">
             <!-- Add All to Log Button -->
             <form method="POST" action="" style="margin-top: 20px;">
+            <h2>This button will add all schedules to the logs</h2>
                 <input type="submit" name="add_all_to_log" value="Add All to Log" class="button">
             </form>
         </div>

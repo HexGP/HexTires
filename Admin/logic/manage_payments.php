@@ -153,7 +153,7 @@ $conn->close();
                     <td><?php echo $row['tech_first_name'] . ' ' . $row['tech_last_name']; ?></td>
                     <td>$<?php echo number_format($row['amount_paid'], 2); ?></td>
                     <td>$<?php echo number_format($row['tip_amount'], 2); ?></td>
-                    <td><?php echo $row['payment_date']; ?></td>
+                    <td><?php echo date("m/d/Y", strtotime($row['payment_date'])); ?></td>
                     <td><?php echo ucfirst($row['payment_status']); ?></td>
                 </tr>
                 <?php endwhile; ?>

@@ -14,6 +14,37 @@ body {
     height: 100vh;
 }
 
+/* =================== Element Styles =================== */
+p {
+    color: #d3d3d3;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.back-button,
+.service-confirm,
+input[type="submit"],
+input[type="button"] {
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button {
+    background-color: #CAFF33;
+    color: #121212;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+}
+
+.back-button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #b8e328;
+}
+
 /* =================== Sidebar Layout =================== */
 .sidebar {
     width: 250px;
@@ -57,7 +88,6 @@ body {
     display: none;
     border-radius: 50%;
     overflow: hidden;
-    /* background-color: #888; */
     /* background-color: #1C1C1C; */
     border: 2px solid #CAFF33;
     display: flex;
@@ -127,25 +157,12 @@ body {
 /* =================== Dashboard Layout =================== */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Fixed 3 columns for equal sizing */
+    grid-template-columns: 2fr 2fr 2fr; /* Fixed 3 columns for equal sizing */
+    /* max-width: max-content; */
     gap: 20px;
     padding: 20px;
     width: calc(100% - 200px); /* Full width minus sidebar */
     box-sizing: border-box;
-}
-
-.grid-stack {
-    display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    /* padding: 20px; */
-}
-
-.grid-stamp {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    /* padding: 20px; */
 }
 
 /* Grid Item Styling */
@@ -174,6 +191,45 @@ body {
     z-index: 1; /* Ensure the hovered item stays above others */
     box-shadow: 0 0 15px rgba(201, 255, 51, 0.955);
 }
+/* =================== Grid Icon Layout =================== */
+
+/* Styling for Grid Item with SVG and H3 */
+.grid-item.appointments,.grid-item.payments,
+.grid-item.services,.grid-item.technicians,
+.grid-item.clients,.grid-item.schedule {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.grid-item .grid-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px; /* Space between the SVG and the heading */
+}
+
+.grid-item h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the SVG and the text */
+    font-size: 1.5rem; /* Adjust heading size */
+    line-height: 1.5;
+    margin: 0; /* Remove extra margin */
+}
+
+/* Ensuring SVG and Heading Align Side by Side */
+.grid-item .grid-svg img {
+    width: 30px; /* Adjust the size of the SVG */
+    height: 30px;
+    object-fit: cover; /* Ensure proper scaling */
+}
+
+/* =================== Grid Icon Layout =================== */
 
 .service-icon {
     width: 24px; /* Set width */
@@ -237,142 +293,244 @@ body {
 
 /* =================== Responsive Layout =================== */
 
-@media (max-width: 2400px) {
-    /* Dashboard Grid */
+@media (max-width: 1440px) {
     .dashboard-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust item width */
-        gap: 10px; /* Reduce grid gaps */
-        padding: 10px; /* Compact padding */
-        width: calc(100% - 200px); /* Adjust for the sidebar */
-        margin: 0 auto; /* Center the grid content */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+        width: calc(100% - 200px);
+        margin: 0 auto;
     }
 
     .grid-item {
-        width: 100%; /* Ensure grid items fit within the columns */
-        padding: 8px; /* Reduce grid item padding */
-        border-radius: 5px; /* Compact border radius */
-        font-size: 0.8rem; /* Smaller text size */
-        box-sizing: border-box; /* Ensure consistent width */
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        box-sizing: border-box;
     }
 
     .grid-item h2 {
-        font-size: 0.9rem; /* Smaller heading size */
-        margin-bottom: 8px; /* Tighten spacing */
-        text-align: center; /* Center-align headings */
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 8px;
     }
 
-    /* Tables Inside Grid Items */
     .table-container {
-        font-size: 0.7rem; /* Reduce table text size */
+        font-size: 0.7rem;
     }
 
     .table-header span,
     .table-row span {
-        padding: 4px; /* Compact cell padding */
-        font-size: 0.7rem; /* Smaller text inside table rows */
+        padding: 4px;
+        font-size: 0.7rem;
     }
 
-    .table-header span {
-        font-size: 0.75rem; /* Compact header font size */
-    }
-
-    .table-row span {
-        font-size: 0.7rem; /* Compact row text */
-    }
-
-    /* Buttons Inside Grid Items */
-    .settings-button,
-    .logout-button {
-        font-size: 0.75rem; /* Smaller button font */
-        padding: 5px 10px; /* Compact button size */
-        margin: 5px 0; /* Add spacing between buttons */
-    }
-
-    /* Images Inside Grid Items */
-    .service-icon {
-        width: 16px; /* Smaller service icons */
-        height: 16px;
-    }
-
-    .profile-preview {
-        width: 40px; /* Smaller profile preview */
-        height: 40px;
-    }
-
-    .circle-frame {
-        width: 50px; /* Reduce circle frame size */
-        height: 50px;
-    }
-
-    /* Sidebar Adjustments */
     .sidebar {
-        width: 200px; /* Adjust sidebar width */
-        padding: 10px; /* Compact padding */
+        width: 200px;
+        padding: 10px;
     }
 
     .admin-info {
         padding: 10px;
-        font-size: 0.8rem; /* Reduce sidebar text */
+        font-size: 0.8rem;
         border-radius: 6px;
     }
 
     .admin-info h3 {
-        font-size: 1rem; /* Smaller sidebar headings */
+        font-size: 1rem;
     }
 
     .admin-info p {
-        font-size: 0.8rem; /* Smaller text */
+        font-size: 0.8rem;
     }
 
-    /* Lists or Text Blocks Inside Grid Items */
+    .circle-frame {
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile-preview {
+        width: 40px;
+        height: 40px;
+    }
+
+    .settings-button,
+    .logout-button {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+        margin: 5px 0;
+    }
+
     .grid-item ul,
-    .grid-item p {
-        font-size: 0.75rem; /* Smaller text for lists or paragraphs */
-        line-height: 1.2; /* Compact line height */
-        margin: 5px 0; /* Reduce spacing */
-    }
-
-    /* Inputs Inside Grid Items */
-    .grid-item input,
-    .grid-item select {
-        font-size: 0.75rem; /* Reduce input font size */
-        padding: 4px 6px; /* Compact input padding */
-        margin: 5px 0; /* Reduce spacing between inputs */
-    }
-
-    /* Labels Inside Grid Items */
-    .grid-item label {
-        font-size: 0.75rem; /* Smaller labels */
-        margin: 5px 0; /* Reduce spacing for labels */
-        display: block; /* Ensure labels stack properly */
-    }
-
-    /* Links Inside Grid Items */
+    .grid-item p,
     .grid-item a {
-        font-size: 0.75rem; /* Smaller link text */
-        text-decoration: none; /* Ensure clean links */
-        color: #CAFF33; /* Keep links visible */
-        margin: 5px 0; /* Reduce spacing between links */
+        font-size: 0.75rem;
+        line-height: 1.2;
     }
 
     .grid-item a:hover {
-        text-decoration: underline; /* Add hover effect for clarity */
+        text-decoration: underline;
     }
 }
 
+@media (max-width: 1080px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding: 8px;
+        width: calc(100% - 180px);
+        margin: 0 auto;
+    }
 
+    .grid-item {
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+    }
 
+    .grid-item h2 {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 6px;
+    }
 
-@media (max-width: 768px) {
+    .table-container {
+        font-size: 0.65rem;
+    }
+
+    .table-header span,
+    .table-row span {
+        padding: 3px;
+        font-size: 0.65rem;
+    }
+
+    .sidebar {
+        width: 180px;
+        padding: 8px;
+    }
+
+    .admin-info {
+        padding: 8px;
+        font-size: 0.75rem;
+        border-radius: 5px;
+    }
+
+    .admin-info h3 {
+        font-size: 0.9rem;
+    }
+
+    .admin-info p {
+        font-size: 0.75rem;
+    }
+
+    .circle-frame {
+        width: 45px;
+        height: 45px;
+    }
+
+    .profile-preview {
+        width: 35px;
+        height: 35px;
+    }
+
+    .settings-button,
+    .logout-button {
+        font-size: 0.7rem;
+        padding: 5px 8px;
+        margin: 4px 0;
+    }
+
+    .grid-item ul,
+    .grid-item p,
+    .grid-item a {
+        font-size: 0.7rem;
+        line-height: 1.2;
+    }
+
+    .grid-item a:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 810px) {
     .dashboard-grid {
         grid-template-areas:
             "appointments"
+            "payments"
+            "services"
             "technician"
             "clients"
-            "services"
-            "display";
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5, 1fr);
+            "schedule";
+        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-rows: repeat(6, 1fr); /* Equal height for all rows */
         gap: 10px;
+        width: calc(100% - 150px); /* Adjust for the sidebar */
+        height: 100vh; /* Full screen height */
+    }
+
+    .sidebar {
+        width: 150px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .admin-info {
+        font-size: 0.9rem;
+        padding: 15px;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .admin-info h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .admin-info p {
+        display: none;
+    }
+
+    .circle-frame {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #CAFF33;
+    }
+
+    .profile-preview {
+        width: 70%;
+        height: 70%;
+    }
+
+    .settings-button,
+    .logout-button {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .grid-item h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 0 auto;
+        line-height: 1.5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .table-container .table-row,
+    .table-container .table-header span {
+        display: none;
+    }
+
+    .table-header h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #CAFF33;
+        text-align: center;
+        margin: 20px 0;
     }
 }

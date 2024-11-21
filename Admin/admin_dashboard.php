@@ -36,14 +36,16 @@ $appointments_sql = "SELECT a.appointment_id, a.appointment_date, a.appointment_
                      JOIN Services s ON a.service_id = s.service_id
                      JOIN Clients c ON a.client_id = c.client_id
                      LEFT JOIN Technicians t ON a.technician_id = t.technician_id
-                     ORDER BY appointment_date ASC LIMIT 5";
+                     ORDER BY appointment_date ASC LIMIT 10";
 $appointments_result = $conn->query($appointments_sql);
 
-$car_types_sql = "SELECT car_type_id, car_desc FROM CarTypes ORDER BY car_type_id ASC LIMIT 5";
-$car_types_result = $conn->query($car_types_sql);
 
-$tire_types_sql = "SELECT tire_type_id, tire_type FROM TireTypes ORDER BY tire_type_id ASC LIMIT 5";
-$tire_types_result = $conn->query($tire_types_sql);
+// $car_types_sql = "SELECT car_type_id, car_desc FROM CarTypes ORDER BY car_type_id ASC LIMIT 5";
+// $car_types_result = $conn->query($car_types_sql);
+
+// $tire_types_sql = "SELECT tire_type_id, tire_type FROM TireTypes ORDER BY tire_type_id ASC LIMIT 5";
+// $tire_types_result = $conn->query($tire_types_sql);
+
 
 // Fetch Payments data
 $payments_sql = "SELECT p.payment_id, c.first_name AS client_first_name, c.last_name AS client_last_name, 
@@ -51,30 +53,30 @@ $payments_sql = "SELECT p.payment_id, c.first_name AS client_first_name, c.last_
                 FROM Payments p
                 JOIN Clients c ON p.client_id = c.client_id
                 LEFT JOIN Technicians t ON p.technician_id = t.technician_id
-                ORDER BY p.payment_date ASC LIMIT 5";
+                ORDER BY p.payment_date ASC LIMIT 10";
 $payments_result = $conn->query($payments_sql);
 
 if (!$payments_result) {
     die("SQL Error: " . $conn->error);
 }
 
-$services_sql = "SELECT service_id, svg_icon, service_name, service_price FROM Services ORDER BY service_id ASC LIMIT 5";
+$services_sql = "SELECT service_id, svg_icon, service_name, service_price FROM Services ORDER BY service_id ASC LIMIT 10";
 $services_result = $conn->query($services_sql);
 
-$technicians_sql = "SELECT technician_id, first_name, last_name, email, phone_number FROM Technicians ORDER BY technician_id ASC LIMIT 5";
+$technicians_sql = "SELECT technician_id, first_name, last_name, email, phone_number FROM Technicians ORDER BY technician_id ASC LIMIT 10";
 $technicians_result = $conn->query($technicians_sql);
 
 $schedule_sql = "SELECT schedule_id, technician_id, schedule_date AS date, start_time, end_time 
                  FROM Schedule 
                  ORDER BY schedule_date ASC 
-                 LIMIT 5";
+                 LIMIT 10";
 $schedule_result = $conn->query($schedule_sql);
 
 if (!$schedule_result) {
     die("SQL Error: " . $conn->error);
 }
 
-$clients_sql = "SELECT client_id, first_name, last_name, email, phone_number FROM Clients ORDER BY client_id ASC LIMIT 5";
+$clients_sql = "SELECT client_id, first_name, last_name, email, phone_number FROM Clients ORDER BY client_id ASC LIMIT 10";
 $clients_result = $conn->query($clients_sql);
 
 function formatPhoneNumber($phoneNumber) {
@@ -111,31 +113,32 @@ $conn->close();
     <div class="dashboard-container">
         <nav class="sidebar">
             <div class="admin-info">
-                <h3>Admin</h3>
-                <!-- <img src="../images/admin.svg" alt="Profile Picture" class="profile-preview"> -->
-
+                <h3>Admin </h3>
                 <div class="circle-frame">
                     <img src="../images/admin.svg" alt="Profile Picture" class="profile-preview">
                 </div>
-                
+
                 <p><?php echo $admin['first_name'] . " " . $admin['last_name']; ?></p>
                 <p><?php echo $admin['email']; ?></p>
                 <p><?php echo formatPhoneNumber($admin['phone_number']); ?></p>
             </div>
+
             <div class="button-group">
-                <form action="logic/manage_settings.php" method="GET" class="settings-button">
-                    <button type="submit">Settings</button>
-                </form>
-                <form action="admin_logout.php" method="POST" class="logout-button">
-                    <button type="submit">Logout</button>
-                </form>
+                <button onclick="window.location.href='logic/manage_settings.php';"
+                    class="settings-button">Settings</button>
+                <button onclick="window.location.href='admin_logout.php';" class="logout-button">Logout</button>
             </div>
         </nav>
 
         <main class="dashboard-grid">
             <!-- Appointments Table View -->
             <div class="grid-item appointments">
-                <h2>Appointments</h2>
+                <h3>
+                    <div class="grid-svg">
+                        <img src="../images/appointment.svg" class="profile-preview">
+                    </div>
+                    Appointments
+                </h3>
                 <div class="table-container">
                     <div class="table-header">
                         <span>ID</span>
@@ -157,12 +160,14 @@ $conn->close();
                 <a href="logic/manage_appointments.php" class="overlay-link"></a>
             </div>
 
-            <!-- Car Types Table View -->
-             
-
             <!-- Payments Table View -->
             <div class="grid-item payments">
-                <h2>Payments</h2>
+                <h3>
+                    <div class="grid-svg">
+                        <img src="../images/payment.svg" class="profile-preview">
+                    </div>
+                    Payments
+                </h3>
                 <div class="table-container">
                     <div class="table-header">
                         <span>Payment ID</span>
@@ -186,7 +191,12 @@ $conn->close();
 
             <!-- Services Table View -->
             <div class="grid-item services">
-                <h2>Services</h2>
+                <h3>
+                    <div class="grid-svg">
+                        <img src="../images/service.svg" class="profile-preview">
+                    </div>
+                    Services
+                </h3>
                 <div class="table-container">
                     <div class="table-header">
                         <span>ID</span>
@@ -211,7 +221,12 @@ $conn->close();
 
             <!-- Technician Table View -->
             <div class="grid-item technicians">
-                <h2>Technicians</h2>
+                <h3>
+                    <div class="grid-svg">
+                        <img src="../images/tech.svg" class="profile-preview">
+                    </div>
+                    Technicians
+                </h3>
                 <div class="table-container">
                     <div class="table-header">
                         <span>ID</span>
@@ -233,7 +248,12 @@ $conn->close();
 
             <!-- Clients Table View -->
             <div class="grid-item clients">
-                <h2>Clients</h2>
+                <h3>
+                    <div class="grid-svg">
+                        <img src="../images/client.svg" class="profile-preview">
+                    </div>
+                    Clients
+                </h3>
                 <div class="table-container">
                     <div class="table-header">
                         <span>ID</span>
@@ -255,7 +275,12 @@ $conn->close();
 
             <!-- Schedule Table View -->
             <div class="grid-item schedule">
-                <h2>Schedule</h2>
+                <h3>
+                    <div class="grid-svg">
+                        <img src="../images/schedule.svg" class="profile-preview">
+                    </div>
+                    Schedule
+                </h3>
                 <div class="table-container">
                     <div class="table-header">
                         <span>ID</span>
